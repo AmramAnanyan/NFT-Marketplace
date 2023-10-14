@@ -1,0 +1,43 @@
+// needded medias
+
+.buttonContainer {
+  width: auto;
+  height: 72px;
+  all: unset;
+  align-items: center;
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 12px 42px;
+  position: relative;
+  background-color: var(--color-purple);
+  border: 3px solid var(--color-purple);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-dark);
+    .textWrapper {
+      color: var(--color-purple);
+    }
+    .leftIcon {
+      filter: var(--filter-png-purple-icons);
+    }
+  }
+}
+.textWrapper {
+  color: #ffffff;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+.leftIcon {
+  height: 20px;
+  position: relative;
+  width: 20px;
+}

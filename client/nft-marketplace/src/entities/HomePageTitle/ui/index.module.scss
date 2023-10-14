@@ -1,0 +1,33 @@
+.container {
+  width: 510px;
+  height: auto;
+
+  h1 {
+    font-size: 48px;
+    font-family: sans-serif;
+    color: white;
+  }
+  h5 {
+    font-size: 24px;
+    font-family: sans-serif;
+    color: white;
+    letter-spacing: 2px;
+    margin: 24px 0;
+  }
+  ul {
+    display: flex;
+    justify-content: start;
+    list-style: none;
+    margin-top: 24px;
+    li {
+      color: white;
+      flex: 1;
+      h4 {
+        font-size: 20px;
+      }
+      h2 {
+        font-size: 28px;
+      }
+    }
+  }
+}
