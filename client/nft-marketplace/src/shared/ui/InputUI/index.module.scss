@@ -1,0 +1,19 @@
+.inputStyles {
+  width: 320px;
+  height: 38px;
+  border: none;
+  border-bottom: 2px solid var(--color-grey);
+  background-color: transparent;
+  font-size: 18px;
+  font-family: sans-serif;
+  outline: none;
+}
+.labelStyles {
+  width: 320px;
+  height: 24px;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: var(--color-grey);
+  font-weight: bolder;
+  letter-spacing: 1px;
+}

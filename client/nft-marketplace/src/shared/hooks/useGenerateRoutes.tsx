@@ -17,7 +17,7 @@ const HARD_CODE_ROUTES: Array<RouteType> = [
     path: '/ranking',
     props: null,
     component: lazy(() => import('pages/RankingPage')),
-    isPrivate: false
+    isPrivate: true
   }
 ]
 const useGenerateRoutes = () => {

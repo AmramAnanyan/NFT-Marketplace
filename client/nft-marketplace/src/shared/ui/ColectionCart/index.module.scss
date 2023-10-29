@@ -1,0 +1,83 @@
+.colectionCartConteinter {
+  width: 316px;
+  height: auto;
+}
+.colectionImage {
+  width: 74px;
+  height: 74px;
+}
+
+.colectionImageLink {
+  width: 74px;
+  height: 74px;
+}
+
+.colectionImageContainer {
+  width: auto;
+  height: 410px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 328px;
+
+  .colectionImageWrraper {
+    width: 94px;
+    height: 94px;
+    border-radius: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
+  & :first-child {
+    background-color: green;
+    width: 312px;
+    height: 312px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+  & :last-child {
+    background-color: var(--color-purple);
+    color: white;
+    background-image: none !important;
+
+    & ::before {
+      content: 'More';
+      font-size: 24px;
+      font-weight: bold;
+      font-family: sans-serif;
+      z-index: 10;
+      position: absolute;
+      top: 34%;
+      left: 18%;
+    }
+  }
+}
+
+.colectionName {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: white;
+  margin-top: 24px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+
+  img {
+    width: 36px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 24px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+  }
+}

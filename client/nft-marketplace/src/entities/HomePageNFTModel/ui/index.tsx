@@ -1,13 +1,9 @@
-import React from 'react'
+import HeroModel from 'entities/3dworldmodel'
 
 const HomePageModelNFT = () => {
   return (
     <div style={{ width: '510px', height: '510px' }}>
-      <img
-        width='510px'
-        height='510px'
-        src='https://media.istockphoto.com/id/1367699775/photo/nft-non-fungible-token-golden-coins-falling-trendy-cryptocurrencies-and-coins-on-the.jpg?s=1024x1024&w=is&k=20&c=-hIyE7TTcGTOsBdCf_YDwvE7vVzg7i6KybLpCvd3OrM='
-      />
+      <HeroModel />
     </div>
   )
 }

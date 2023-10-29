@@ -20,3 +20,29 @@ export interface INavBar {
   userStatus: UserStatus
 }
 ///////////////////////////
+
+export interface IUser {
+  id: string
+  name: string
+  image: string
+  email: string
+  password: string
+  totalSales: string | number
+  products: Array<any>
+  colections: Array<any>
+}
+
+export interface IProduct {
+  id: string
+  name: string
+  description: string
+  image: string
+  cryptoValet: string
+  price: number
+  highestBid: number
+}
+
+export interface IColection {
+  id: string
+  name: string
+}
