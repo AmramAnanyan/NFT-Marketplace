@@ -1,8 +1,9 @@
 import HeroModel from 'entities/3dworldmodel'
+import styles from './index.module.scss'
 
 const HomePageModelNFT = () => {
   return (
-    <div style={{ width: '510px', height: '510px' }}>
+    <div className={styles.conteiner}>
       <HeroModel />
     </div>
   )

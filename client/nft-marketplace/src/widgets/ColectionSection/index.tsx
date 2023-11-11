@@ -1,6 +1,7 @@
 // @ts-nocheck
 import ColectionCart from 'shared/ui/ColectionCart'
 import styles from './index.module.scss'
+import LoyautForSection from 'shared/ui/LoyautForSection'
 interface IColection {
   id: string
   colectionName: string
@@ -24,17 +25,25 @@ const colectData: IColection = {
 const ColectionSection = () => {
   return (
     <section className={styles.conteiner}>
-      <div className={styles.headingWrraper}>
-        <h2>Trending Collection</h2>
-        <h4>Checkout Our Weekly Updated Trending Collection.</h4>
-      </div>
-      <div className={styles.colectionSection}>
+      <LoyautForSection>
         <ColectionCart {...colectData} />
         <ColectionCart {...colectData} />
         <ColectionCart {...colectData} />
-      </div>
+      </LoyautForSection>
     </section>
   )
 }
 
 export default ColectionSection
+
+{
+  /* <div className={styles.headingWrraper}>
+<h2>Trending Collection</h2>
+<h4>Checkout Our Weekly Updated Trending Collection.</h4>
+</div>
+<div className={styles.colectionSection}>
+<ColectionCart {...colectData} />
+<ColectionCart {...colectData} />
+<ColectionCart {...colectData} />
+</div> */
+}

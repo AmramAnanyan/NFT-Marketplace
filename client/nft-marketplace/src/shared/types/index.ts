@@ -17,7 +17,6 @@ interface INavigation {
 export interface INavBar {
   brand: Brand
   navigations: Array<INavigation>
-  userStatus: UserStatus
 }
 ///////////////////////////
 

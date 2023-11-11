@@ -1,20 +1,16 @@
 import CategoryCard from 'shared/ui/CategoryCart'
 import styles from './index.module.scss'
+import LoyautForSection from 'shared/ui/LoyautForSection'
 
 const BrowseCategory = () => {
   return (
     <section className={styles.conteiner}>
-      <div className={styles.headingWrraper}>
-        <h2>Trending Collection</h2>
-        <h4>Checkout Our Weekly Updated Trending Collection.</h4>
-      </div>
-      <div className={styles.colectionSection}>
+      <LoyautForSection>
         <CategoryCard />
         <CategoryCard />
         <CategoryCard />
         <CategoryCard />
-        <CategoryCard />
-      </div>
+      </LoyautForSection>
     </section>
   )
 }

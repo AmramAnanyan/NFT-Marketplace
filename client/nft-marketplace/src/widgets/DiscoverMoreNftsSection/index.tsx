@@ -1,11 +1,15 @@
 import React from 'react'
+import LoyautForSection from 'shared/ui/LoyautForSection'
 import NftCart from 'shared/ui/NftCart'
 
 const DiscoverMoreNftSection = ({ data }: any) => {
   return (
     <section>
-      discover more nfts sections
-      <NftCart {...data} />
+      <LoyautForSection>
+        <NftCart {...data} />
+        <NftCart {...data} />
+        <NftCart {...data} />
+      </LoyautForSection>
     </section>
   )
 }

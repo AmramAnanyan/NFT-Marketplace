@@ -1,25 +1,25 @@
+import { Link, NavLink } from 'react-router-dom'
 import styles from './index.module.scss'
 import userLogo from 'shared/assets/pngIcon/User.png'
 import { INavBar } from 'shared/types'
 
-const NavBar = ({ brand, navigations, userStatus }: INavBar) => {
+const NavBar = ({ brand, navigations }: INavBar) => {
   return (
     <nav className={styles.conteiner_navbar}>
       <div className={styles.logo}>
-        <a href=''>{brand.title}</a>
+        <NavLink to={''}>{brand.title}</NavLink>
       </div>
       <ul className={styles.navigation_bar}>
         {navigations.map(({ id, title, path }) => {
           return (
             <li key={id}>
-              <a href={path}>{title}</a>
+              <NavLink to={path}>{title}</NavLink>
+              {path === '/sign-in' && (
+                <img src={userLogo} alt='' className={styles.userLogo} />
+              )}
             </li>
           )
         })}
-        <li>
-          <img src={userLogo} alt='' className={styles.userLogo} />
-          <a href='http://'>{userStatus.title}</a>
-        </li>
       </ul>
     </nav>
   )

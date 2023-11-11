@@ -13,5 +13,12 @@ export const HARD_CODE_NAVIGATION_BAR = [
     active: false,
     isLogin: false,
     path: '/conect-wallet'
+  },
+  {
+    id: 4,
+    title: 'Sign In',
+    active: false,
+    isLogin: false,
+    path: '/sign-in'
   }
 ]

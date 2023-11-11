@@ -1,0 +1,14 @@
+.conteiner {
+  width: 510px;
+  height: 510px;
+  @media only screen and (max-width: 420px) {
+    margin-top: 48px;
+    width: 320px;
+    height: 320px;
+    margin: auto;
+    margin-bottom: 48px;
+  }
+  @media only screen and (max-width: 920px) {
+    margin-top: 48px;
+  }
+}

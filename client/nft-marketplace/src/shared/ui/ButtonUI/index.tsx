@@ -4,6 +4,7 @@ export interface IButtonUI {
   classN?: string
   isLoading: boolean
   text: string
+  type?: 'submit' | 'reset' | undefined
   leftIconSrc?: string
   rightIconSrc?: string
 }
@@ -11,11 +12,12 @@ const ButtonUI = ({
   isLoading = false,
   leftIconSrc,
   text,
+  type,
   rightIconSrc = '',
   classN
 }: IButtonUI) => {
   return (
-    <button className={`${styles.buttonContainer} ${classN}`}>
+    <button className={`${styles.buttonContainer} ${classN}`} type={type}>
       {isLoading ? (
         <SpikeRollLoader />
       ) : (

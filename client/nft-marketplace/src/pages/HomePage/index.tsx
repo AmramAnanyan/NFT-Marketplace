@@ -34,22 +34,13 @@ const HomePage = () => {
     price: 1.35,
     cryptoValet: 'ETH'
   }
-  const handleChange = (e: any) => {
-    console.log(e)
-  }
+
   return (
     <div className={styles.container}>
       <HeroSection />
       <ColectionSection />
       <TopCreatorsSection />
       <BrowseCategory />
-      <InputUi
-        id='1'
-        type='text'
-        onChange={handleChange}
-        placeholder='name'
-        label='Fill your name'
-      />
       {/* @ts-ignore */}
       <DiscoverMoreNftSection data={nftCartData} />
     </div>
