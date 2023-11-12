@@ -10,7 +10,7 @@ const useGenerateRoutes = () => {
   defaultRoutes.push({
     path: '/',
     element: <WrapperNavbar />,
-    // errorElement: <Error404Page />,
+    errorElement: <Error404Page />,
     children: [{ path: '/', element: <HomePage /> }]
   })
   HARD_CODE_ROUTES.forEach((route) => {

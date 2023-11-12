@@ -7,6 +7,7 @@ export interface IInput {
   label?: string
   placeholder?: string
   onChange: (event: React.SyntheticEvent) => void
+  value: string
   classN?: string
 }
 const InputUi = ({
@@ -16,6 +17,7 @@ const InputUi = ({
   label,
   name,
   onChange,
+  value = '',
   classN
 }: IInput) => {
   return (
@@ -32,6 +34,7 @@ const InputUi = ({
         placeholder={placeholder}
         onChange={onChange}
         className={`${styles.inputStyles} ${classN}`}
+        value={value}
       />
     </>
   )

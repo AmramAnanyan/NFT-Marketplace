@@ -1,50 +1,33 @@
-import React from 'react'
 import ButtonUI from 'shared/ui/ButtonUI'
 import InputUi from 'shared/ui/InputUI'
 import styles from './index.module.scss'
 import { Link } from 'react-router-dom'
+import { REGISTRATION_FORM } from '../constants'
+
+import useForm from 'shared/hooks/useForm'
+import { useEffect } from 'react'
 
 const RegistrationForm = () => {
-  const handleChange = () => {}
+  const { errors, formData, handleChange, handleSubmit } = useForm()
+  useEffect(() => {
+    if (!errors) {
+      console.log('dispatch register form data')
+    }
+  }, [errors])
   return (
     <div className={styles.container}>
       <p>Registration</p>
-      <form>
-        <InputUi
-          type='text'
-          id='name'
-          onChange={handleChange}
-          name='name'
-          placeholder='name'
-        />
-        <InputUi
-          type='text'
-          id='surname'
-          onChange={handleChange}
-          name='surname'
-          placeholder='surname'
-        />
-        <InputUi
-          type='email'
-          id='login_email'
-          onChange={handleChange}
-          name='email'
-          placeholder='Email'
-        />
-        <InputUi
-          type='date'
-          id='user_date'
-          onChange={handleChange}
-          name='userDate'
-          placeholder='Date'
-        />
-        <InputUi
-          type='text'
-          id='login_password'
-          onChange={handleChange}
-          name='password'
-          placeholder='Password'
-        />
+      <form onSubmit={handleSubmit}>
+        {REGISTRATION_FORM.map((input) => {
+          return (
+            <InputUi
+              key={input.id}
+              {...input}
+              value={formData[input.name || ''] || ''}
+              onChange={handleChange}
+            />
+          )
+        })}
         <div className={styles.socialLoginContainer}>sign up with google</div>
         <ButtonUI text='Registration' isLoading={false} type='submit' />
         <Link className={styles.loginLink} to={'/sign-in'}>
