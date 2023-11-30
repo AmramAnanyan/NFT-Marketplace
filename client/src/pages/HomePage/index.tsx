@@ -36,14 +36,14 @@ const HomePage = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       <HeroSection />
       <ColectionSection />
       <TopCreatorsSection />
       <BrowseCategory />
       {/* @ts-ignore */}
       <DiscoverMoreNftSection data={nftCartData} />
-    </div>
+    </main>
   )
 }
 

@@ -4,7 +4,6 @@
   align-items: start;
   margin-top: 36px;
   max-width: 1080px;
-
   h2 {
     color: white;
     font-size: 42px;
@@ -28,7 +27,7 @@
 }
 .colectionSection {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 24px;

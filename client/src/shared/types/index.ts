@@ -10,12 +10,16 @@ type UserStatus = {
 interface INavigation {
   id: string | number
   title: string
-  active: boolean
-  isLogin: boolean
+  active?: boolean
+  isLogin?: boolean
   path: string
+  subTitles?: INavigation[]
 }
 export interface INavBar {
   brand: Brand
+  navigations: Array<INavigation>
+}
+export interface IFooter {
   navigations: Array<INavigation>
 }
 ///////////////////////////
