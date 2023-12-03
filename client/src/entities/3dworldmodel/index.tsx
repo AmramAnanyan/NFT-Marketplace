@@ -1,11 +1,11 @@
-//@ts-nocheck
-import { ReactNode, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Suspense } from 'react'
 import { Canvas, ThreeEvent } from '@react-three/fiber'
 import { OrbitControls, Environment } from '@react-three/drei'
 import { useLoader, useFrame } from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import backEnviremnt from '../3dworldmodel/back222.jpg'
+
 //@ts-ignore
 import heroModel from '../3dworldmodel/222.glb'
 
@@ -13,7 +13,10 @@ interface Iprops {
   modelPath: string
   position: Array<number>
 }
-const GltfModel = ({ modelPath, position = [50, -220, -350] }: Iprops) => {
+export const GltfModel = ({
+  modelPath,
+  position = [50, -220, -350]
+}: Iprops) => {
   const ref = useRef<THREE.Mesh | null>(null)
   const gltf = useLoader(GLTFLoader, modelPath)
   const [hovered, hover] = useState(false)
@@ -26,9 +29,11 @@ const GltfModel = ({ modelPath, position = [50, -220, -350] }: Iprops) => {
       ref.current.scale.x = 1.2
       ref.current.scale.z = 1.2
     } else {
-      ref.current.scale.y = 1
-      ref.current.scale.x = 1
-      ref.current.scale.z = 1
+      if (ref.current) {
+        ref.current.scale.y = 1
+        ref.current.scale.x = 1
+        ref.current.scale.z = 1
+      }
     }
   })
 

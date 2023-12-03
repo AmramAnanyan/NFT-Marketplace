@@ -1,14 +1,10 @@
 import { render, screen } from '@testing-library/react'
-import App from './app/index'
+import App from 'app'
+import 'jest-canvas-mock'
+import UserCart from 'shared/ui/UserCart'
 
 test('renders learn react link', () => {
-  render(<App />)
-  console.log()
-  const linkElement = screen.getByText(/Discover Digital/i)
-  console.log(linkElement)
+  render(<UserCart />)
+  const linkElement = screen.getByText(/Total/i)
   expect(linkElement).toBeInTheDocument()
-})
-
-test('adds 1 + 2 to equal 3', () => {
-  expect(1 + 2).toBe(3)
 })
