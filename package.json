@@ -1,0 +1,13 @@
+{
+  "name": "nft-marketplace",
+  "version": "1.0.0",
+  "description": "This is client and server package",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm --prefix client/ run start",
+    "test": "npm --prefix client/ run test",
+    "build": "npm --prefix client/ run build"
+  },
+  "author": "Amram Ananyan",
+  "license": "ISC"
+}
