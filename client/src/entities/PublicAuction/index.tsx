@@ -28,7 +28,7 @@ const PublicAuction = () => {
           </div>
         </div>
         <div>
-          <AuctionTimer hours={24} minutes={50} seconds={50} />
+          <AuctionTimer hours={24} minutes={50} seconds={49} />
         </div>
       </div>
     </section>
