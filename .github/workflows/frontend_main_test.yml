@@ -33,7 +33,9 @@ jobs:
         with:
           path: ~/.npm
           key: node-modules-${{ hashFiles('**/package-lock-json') }}
+      - name: Display content of a file
+        run: cat client/
       - name: Install Dependence
-        run: npm install
+        run: npm ci
       - name: Jest test
         run: npm run test
