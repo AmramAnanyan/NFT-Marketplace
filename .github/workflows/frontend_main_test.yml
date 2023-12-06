@@ -10,10 +10,6 @@ jobs:
     steps:
       - name: Print console
         run: echo Hello GH actions
-      - name: Few consoles
-        run: |
-          echo one console
-          echo two console
   unit_test:
     needs: [print]
     strategy:
