@@ -5,6 +5,15 @@ on:
       - main
     paths-ignore: '.github/workflows/*'
 jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print console
+        run: echo Hello GH actions
+      - name: Few consoles
+        run: |
+          echo one console
+          echo two console
   unit_test:
     strategy:
       matrix:
