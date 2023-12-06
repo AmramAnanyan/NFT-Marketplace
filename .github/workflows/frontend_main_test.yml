@@ -1,0 +1,29 @@
+name: 'Frontend Test case'
+on:
+  push:
+    branches:
+      - main
+    paths-ignore: '.github/workflows/*'
+jobs:
+  unit_test:
+    strategy:
+      matrix:
+        os: ['ubuntu-latest,windows-latest']
+        node_version: [14, 16, 18]
+    runs-on: '${{matrix.os}}'
+    steps:
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.0
+        with:
+          node-version: ${{matrix.node_version}}
+      - name: Get Repasitory Code Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Cache dependence
+        uses: actions/cache@v3.3.2
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock-json') }}
+      - name: Install Dependence
+        run: npm Ci
+      - name: Jest test
+        run: npm run test

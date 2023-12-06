@@ -9,6 +9,7 @@ import { IUser } from 'shared/types'
 
 import nftCreatorImage from '../../shared/assets/pngIcon/User.png'
 import InputUi from 'shared/ui/InputUI'
+import PublicAuction from 'entities/PublicAuction'
 
 const HomePage = () => {
   interface INftCart {
@@ -43,6 +44,7 @@ const HomePage = () => {
       <BrowseCategory />
       {/* @ts-ignore */}
       <DiscoverMoreNftSection data={nftCartData} />
+      <PublicAuction />
     </main>
   )
 }

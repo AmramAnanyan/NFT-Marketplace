@@ -1,0 +1,37 @@
+.auctionConteiner {
+  position: relative;
+  margin-top: 72px;
+  margin-bottom: 72px;
+  font-family: sans-serif;
+  .auctionImage {
+    max-width: 100%;
+    height: auto;
+  }
+  .auctionInfoSection {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    .auctionTitle {
+      font-size: 54px;
+      color: white;
+    }
+    .auctionOwner {
+      margin-top: 24px;
+      width: 240px;
+      max-height: auto;
+    }
+    .conteinerDate {
+      width: 294px;
+      height: 120px;
+      background-color: #3b3b3b80;
+      padding: 30px;
+    }
+  }
+}

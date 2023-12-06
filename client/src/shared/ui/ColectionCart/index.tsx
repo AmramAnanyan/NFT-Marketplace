@@ -18,7 +18,6 @@ const ColectionCart = ({
   userName,
   userImage
 }: IColection) => {
-  console.log(styles, 'styles hahahh')
   return (
     <div className={styles.colectionCartConteinter}>
       <div className={styles.colectionImageContainer}>

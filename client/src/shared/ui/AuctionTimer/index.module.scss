@@ -1,0 +1,30 @@
+.timerConteiner {
+  background-color: #3b3b3b80;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: sans-serif;
+  border-radius: 24px;
+  box-shadow: 1px 0px 10px 0px rgb(202 119 207);
+  .timerTitle {
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  .timerItemConteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 48px;
+  }
+  .timerItem {
+    & :first-child {
+      font-size: 36px;
+      font-weight: bolder;
+      padding-left: 12px;
+    }
+  }
+}
