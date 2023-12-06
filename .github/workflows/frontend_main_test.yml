@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node_version: [14, 16, 18]
+        node_version: [18.]
     runs-on: '${{ matrix.os }}'
     steps:
       - name: Setup Node.js environment
