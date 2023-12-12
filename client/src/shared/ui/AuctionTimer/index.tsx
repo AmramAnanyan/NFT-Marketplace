@@ -7,37 +7,69 @@ export interface ITimer {
   seconds: number
 }
 const AuctionTimer = ({ title, hours, minutes, seconds }: ITimer) => {
-  const [taimerState, setTimerState] = useState({ seconds: seconds })
+  const [timerState, setTimerState] = useState({
+    seconds,
+    minutes,
+    hours
+  })
+  const [isClosedAuction, setIsClosedAuction] = useState(false)
   useEffect(() => {
-    let idInterval = setInterval(() => {
-      setTimerState({ seconds: taimerState.seconds-- })
-      if (taimerState.seconds === 0) {
+    let idInterval = setTimeout(() => {
+      setTimerState((prevState) => {
+        return {
+          ...prevState,
+          seconds: prevState.seconds--
+        }
+      })
+      if (timerState.hours === 0) {
+        setIsClosedAuction(true)
       }
-      console.log(taimerState, 'timer state')
+      if (timerState.seconds === 0) {
+        setTimerState((prevState) => {
+          return {
+            ...prevState,
+            seconds: 59,
+            minutes: prevState.minutes - 1
+          }
+        })
+      }
+      if (timerState.minutes === 0) {
+        setTimerState((prevState) => {
+          return {
+            ...prevState,
+            minutes: 59,
+            hours: prevState.hours - 1
+          }
+        })
+      }
     }, 1000)
     return () => {
       clearInterval(idInterval)
     }
-  }, [])
+  }, [timerState])
 
   return (
-    <div className={styles.timerConteiner}>
-      <div className={styles.timerTitle}>Auction End</div>
-      <div className={styles.timerItemConteiner}>
-        <div className={styles.timerItem}>
-          <div>{hours} : </div>
-          <div>Hours</div>
+    <>
+      {!isClosedAuction && (
+        <div className={styles.timerConteiner}>
+          <div className={styles.timerTitle}>Auction End</div>
+          <div className={styles.timerItemConteiner}>
+            <div className={styles.timerItem}>
+              <div>{timerState.hours} : </div>
+              <div>Hours</div>
+            </div>
+            <div className={styles.timerItem}>
+              <div>{timerState.minutes} : </div>
+              <div>Minutes</div>
+            </div>
+            <div className={styles.timerItem}>
+              <div>{timerState.seconds}</div>
+              <div>Seconds</div>
+            </div>
+          </div>
         </div>
-        <div className={styles.timerItem}>
-          <div>{minutes} : </div>
-          <div>Minutes</div>
-        </div>
-        <div className={styles.timerItem}>
-          <div>{seconds}</div>
-          <div>Seconds</div>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   )
 }
 
