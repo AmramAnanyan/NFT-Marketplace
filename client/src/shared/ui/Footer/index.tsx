@@ -13,7 +13,6 @@ const Footer = ({ navigations }: IFooter) => {
       <div className={styles.sectionWrapper}>
         <div className={styles.columnsConteiner}>
           {navigations.map(({ id, path, title, subTitles }) => {
-            console.log(subTitles, 'subtitles')
             return (
               <>
                 <ul key={id} className={styles.columnNavigation}>

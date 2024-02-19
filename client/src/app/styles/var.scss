@@ -1,9 +1,14 @@
 :root {
+  // colors
+  --color-black: #1b1b1b;
   --color-dark: #2b2b2b;
   --color-grey: #3b3b3b;
   --color-light-grey: #858584;
   --color-primary: #108ee9;
   --color-purple: #a259ff;
+  // filters
   --filter-png-purple-icons: invert(47%) sepia(85%) saturate(4094%)
     hue-rotate(242deg);
+  // screen sizes
+  --mobile-max-width: 420px;
 }

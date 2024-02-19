@@ -8,13 +8,14 @@ const useWindowSize = () => {
     innerWidth: window.innerWidth,
     innerHeight: window.innerHeight
   })
-  const handleResize = (event: Event) => {
-    setGenericSize({
-      innerHeight: window.innerHeight,
-      innerWidth: window.innerWidth
-    })
-  }
+
   useEffect(() => {
+    const handleResize = (event: Event) => {
+      setGenericSize({
+        innerHeight: window.innerHeight,
+        innerWidth: window.innerWidth
+      })
+    }
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)

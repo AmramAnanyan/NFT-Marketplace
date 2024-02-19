@@ -1,15 +1,16 @@
-import { Suspense } from 'react'
-import './index.scss'
-import Routes from 'app/Routing'
+import { Suspense } from 'react';
+import './index.scss';
+import Routes from 'app/Routing';
+import PageLoader from 'shared/ui/PageLoader';
 
 const App = () => {
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PageLoader />}>
         <Routes />
       </Suspense>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

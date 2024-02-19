@@ -1,26 +1,26 @@
-import HeroSection from 'widgets/HeroSection'
-import styles from './index.module.scss'
-import ColectionSection from 'widgets/ColectionSection'
-import TopCreatorsSection from 'widgets/TopCreatorsSection'
-import CategoryCard from 'shared/ui/CategoryCart'
-import BrowseCategory from 'widgets/BrowsCategoriesSection'
-import DiscoverMoreNftSection from 'widgets/DiscoverMoreNftsSection'
-import { IUser } from 'shared/types'
+import HeroSection from 'widgets/HeroSection';
+import styles from './index.module.scss';
+import ColectionSection from 'widgets/ColectionSection';
+import TopCreatorsSection from 'widgets/TopCreatorsSection';
+import CategoryCard from 'shared/ui/CategoryCart';
+import BrowseCategory from 'widgets/BrowsCategoriesSection';
+import DiscoverMoreNftSection from 'widgets/DiscoverMoreNftsSection';
+import { IUser } from 'shared/types';
 
-import nftCreatorImage from '../../shared/assets/pngIcon/User.png'
-import InputUi from 'shared/ui/InputUI'
-import PublicAuction from 'entities/PublicAuction'
+import nftCreatorImage from '../../shared/assets/pngIcon/User.png';
+import InputUi from 'shared/ui/InputUI';
+import PublicAuction from 'entities/PublicAuction';
 
 const HomePage = () => {
   interface INftCart {
-    id: string
-    nftName: string
-    nftImage: string
-    nftCreatorName: IUser['name']
-    nftCreatorImage: IUser['image']
-    highestBid: number
-    price: number
-    cryptoValet: string
+    id: string;
+    nftName: string;
+    nftImage: string;
+    nftCreatorName: IUser['name'];
+    nftCreatorImage: IUser['image'];
+    highestBid: number;
+    price: number;
+    cryptoValet: string;
   }
 
   const nftCartData: INftCart = {
@@ -34,7 +34,7 @@ const HomePage = () => {
     highestBid: 0.35,
     price: 1.35,
     cryptoValet: 'ETH'
-  }
+  };
 
   return (
     <main className={styles.container}>
@@ -46,7 +46,7 @@ const HomePage = () => {
       <DiscoverMoreNftSection data={nftCartData} />
       <PublicAuction />
     </main>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

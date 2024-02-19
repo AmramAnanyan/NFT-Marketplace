@@ -1,5 +1,5 @@
-import { validationKeys } from 'shared/constants/validation'
-import { areAllValuesNull } from './global'
+import { validationKeys } from 'shared/constants/validation';
+import { isPropertyNull } from './global';
 // mising validation uniq functions
 export const validateInputKeys = (keys: string, value: string) => {
   switch (keys) {
@@ -7,63 +7,66 @@ export const validateInputKeys = (keys: string, value: string) => {
     case 'surname':
       {
         if (!value || value.length < 3) {
-          return validationKeys.text
+          return validationKeys.text;
         }
       }
-      break
+      break;
     case 'date':
       {
         if (!value) {
-          return validationKeys.required
+          return validationKeys.required;
         }
       }
-      break
+      break;
     case 'email':
       {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
-          return validationKeys.email
+          return validationKeys.email;
         }
       }
-      break
+      break;
     case 'password':
       {
         if (!value || value.length < 4) {
-          return validationKeys.required
+          return validationKeys.required;
         }
       }
-      break
+      break;
     default:
-      return null
+      return null;
   }
-  return null
-}
+  return null;
+};
 
 export const inValidFieldCheck = (formData: { [key in string]: string }) => {
-  let errorObj: Record<string, Object | null> = {}
+  let errorObj: Record<string, Object | null> = {};
   for (let key in formData) {
-    errorObj[key] = validateInputKeys(key, formData[key])
+    errorObj[key] = validateInputKeys(key, formData[key]);
   }
-  const isAllNull = areAllValuesNull(errorObj)
+  const isAllNull = isPropertyNull(errorObj);
   if (isAllNull) {
-    return null
+    return null;
   }
-  return errorObj
-}
+  return errorObj;
+};
 
 export const addNonChangedFieldsInFormData = (
   formEvent: React.SyntheticEvent,
   formData: Record<string, string>
 ) => {
-  const childrenElements = formEvent.currentTarget.children as HTMLCollection
-  let data: Record<string, string> = {}
+  const {
+    currentTarget: { children: childrenElements }
+  } = formEvent;
+
+  let data: Record<string, string> = {};
   for (let i = 0; i < childrenElements.length; i++) {
     if (childrenElements[i] instanceof HTMLInputElement) {
-      const inputElement = childrenElements[i] as HTMLInputElement
+      const inputElement = childrenElements[i] as HTMLInputElement;
       data[inputElement.name] = formData[inputElement.name]
         ? formData[inputElement.name]
-        : ''
+        : '';
     }
   }
-  return data
-}
+  return data;
+};

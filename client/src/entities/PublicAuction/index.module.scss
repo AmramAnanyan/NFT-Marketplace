@@ -21,11 +21,18 @@
     .auctionTitle {
       font-size: 54px;
       color: white;
+      @media only screen and (max-width: 450px) {
+        font-size: 32px;
+        text-align: center;
+      }
     }
     .auctionOwner {
       margin-top: 24px;
       width: 240px;
       max-height: auto;
+      @media only screen and (max-width: 450px) {
+        display: none;
+      }
     }
     .conteinerDate {
       width: 294px;
