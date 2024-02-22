@@ -3,6 +3,7 @@ import UserService from '../services/UserService';
 import { Result, ValidationError, validationResult } from 'express-validator';
 import UserModel from '../models/User';
 import { Document } from 'mongoose';
+import bcrypt from 'bcrypt';
 interface IUser extends Document {
   _doc?: any;
 }
@@ -16,32 +17,33 @@ class UserController {
     try {
       const errors: Result<ValidationError> = validationResult(req);
       if (errors.isEmpty()) {
-        const hashedPassord = await this.userService.dataHashing(
-          req.body.password
-        );
-        const doc: Document = new UserModel({
-          email: req.body.email,
-          passwordHash: hashedPassord
-        });
-
-        const user: IUser = await doc.save();
-
-        const token = this.userService.authorizeJWT(user._id);
-
-        const { passwordHash, ...userData } = user._doc;
+        const { userData, token } = await this.userService.createUser(req);
         return res.json({
           succes: true,
           token,
           userData
         });
       }
-      res.status(400).json(errors.array());
+      res.status(400).json({ succes: false, errors: errors.array() });
     } catch (err) {
-      console.log(err, 'Registration error');
       res.status(500).json({ message: 'Registration error' });
     }
   };
-  async signIn(req: Request, res: Response) {}
+  signIn = async (req: Request, res: Response) => {
+    try {
+      const errors = validationResult(req);
+      if (errors.isEmpty()) {
+        const user = await this.userService.getUserByEmail(req);
+        res.json({ succes: true, token: user?.token });
+      } else {
+        res.status(400).json({ succes: false, errors: errors.array() });
+      }
+    } catch (err) {
+      res
+        .status(500)
+        .json({ succes: false, message: 'Wrong Email or Password' });
+    }
+  };
 }
 
 export default new UserController();
