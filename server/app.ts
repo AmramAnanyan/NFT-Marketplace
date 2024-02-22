@@ -1,8 +1,18 @@
 import express, { Request, Response, Application } from 'express';
 import dotenv from 'dotenv';
 import { User } from './routes';
+import mongoose from 'mongoose';
 dotenv.config({ path: 'config/.env' });
-
+mongoose
+  .connect(
+    'mongodb+srv://admin:H0VL0KYwnIAOm4HA@cluster0.teacnp5.mongodb.net/marketplaceV1'
+  )
+  .then(() => {
+    console.log('DB conected');
+  })
+  .catch((err) => {
+    console.log(err, 'db error');
+  });
 class App {
   #app: Application = express();
   #globalMiddleWares() {
