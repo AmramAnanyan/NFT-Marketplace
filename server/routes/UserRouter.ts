@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import UserController from '../controllers/UserController';
 import * as UserValidation from '../middelwares/userValidations';
-console.log(UserController);
+
 class UserRouter {
   private router: Router;
   constructor() {

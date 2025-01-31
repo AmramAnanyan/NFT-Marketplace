@@ -3,8 +3,7 @@ import UserModel from '../models/User';
 import bcrypt from 'bcrypt';
 import { Types, Document } from 'mongoose';
 import { Request } from 'express';
-// should be in env
-const JWT_SECTRET_KEY = 'JWT_SECTRET_KEY';
+import { JWT_SECRET_KEY } from '../config/envVariables';
 
 interface IUser extends Document {
   _doc?: any;
@@ -12,13 +11,13 @@ interface IUser extends Document {
 
 class UserService {
   createToken(id: string | Types.ObjectId) {
-    return jwt.sign({ id }, JWT_SECTRET_KEY, {
+    return jwt.sign({ id }, JWT_SECRET_KEY, {
       expiresIn: '7d'
     });
   }
   verifyToken(token: string) {
     try {
-      const decode = jwt.verify(token, JWT_SECTRET_KEY);
+      const decode = jwt.verify(token, JWT_SECRET_KEY);
       console.log(decode, 'decode');
       return token;
     } catch (err) {

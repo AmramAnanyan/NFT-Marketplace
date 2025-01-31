@@ -5,7 +5,7 @@ import PageLoader from 'shared/ui/PageLoader';
 
 const App = () => {
   return (
-    <div>
+    <div className='suspense-wrapper '>
       <Suspense fallback={<PageLoader />}>
         <Routes />
       </Suspense>

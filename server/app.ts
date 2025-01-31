@@ -1,12 +1,9 @@
 import express, { Request, Response, Application } from 'express';
-import dotenv from 'dotenv';
 import { User } from './routes';
 import mongoose from 'mongoose';
-dotenv.config({ path: 'config/.env' });
+import { DATABASE_URL, PORT } from './config/envVariables';
 mongoose
-  .connect(
-    'mongodb+srv://admin:H0VL0KYwnIAOm4HA@cluster0.teacnp5.mongodb.net/marketplaceV1'
-  )
+  .connect(`${DATABASE_URL}`)
   .then(() => {
     console.log('DB conected');
   })
@@ -26,9 +23,8 @@ class App {
     });
   }
   #runServer() {
-    const PORT = process.env.PORT || 4000;
     this.#app.listen(PORT, () => {
-      console.log(`app runed on ${process.env.PORT} PORT`);
+      console.log(`app runed on ${PORT} PORT`);
     });
   }
   run() {

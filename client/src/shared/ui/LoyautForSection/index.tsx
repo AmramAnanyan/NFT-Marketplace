@@ -1,9 +1,9 @@
-import React from 'react'
-import styles from './index.module.scss'
+import React from 'react';
+import styles from './index.module.scss';
 interface ILoyautForSection {
-  title?: string
-  description?: string
-  children: React.ReactNode
+  title?: string;
+  description?: string;
+  children: React.ReactNode;
 }
 const LoyautForSection = ({
   title,
@@ -18,7 +18,7 @@ const LoyautForSection = ({
       </div>
       <div className={styles.colectionSection}>{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default LoyautForSection
+export default LoyautForSection;

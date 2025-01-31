@@ -1,14 +1,14 @@
 //@ts-nocheck
-import UserCart from 'shared/ui/UserCart'
-import styles from './index.module.scss'
-import ButtonUI from 'shared/ui/ButtonUI'
-import { useEffect, useState } from 'react'
-import AuctionTimer from 'shared/ui/AuctionTimer'
-import useWindowSize from 'shared/hooks/useWindowSize'
+import UserCart from 'shared/ui/UserCart';
+import styles from './index.module.scss';
+import ButtonUI from 'shared/ui/ButtonUI';
+import { useEffect, useState } from 'react';
+import AuctionTimer from 'shared/ui/AuctionTimer';
+import useWindowSize from 'shared/hooks/useWindowSize';
 
 const PublicAuction = () => {
-  const [state, setState] = useState<any>({ pos: 50 })
-  const windowSize = useWindowSize()
+  const [state, setState] = useState<any>({ pos: 50 });
+  const windowSize = useWindowSize();
   // useEffect(() => {
   //   setTimeout(() => {
   //     setState({ ...state, pos: state.pos + 50 })
@@ -46,7 +46,7 @@ const PublicAuction = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default PublicAuction
+export default PublicAuction;

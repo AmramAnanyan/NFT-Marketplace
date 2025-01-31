@@ -1,6 +1,6 @@
 import HeroSection from 'widgets/HeroSection';
 import styles from './index.module.scss';
-import ColectionSection from 'widgets/ColectionSection';
+import CollectionSection from 'widgets/ColectionSection';
 import TopCreatorsSection from 'widgets/TopCreatorsSection';
 import CategoryCard from 'shared/ui/CategoryCart';
 import BrowseCategory from 'widgets/BrowsCategoriesSection';
@@ -39,7 +39,7 @@ const HomePage = () => {
   return (
     <main className={styles.container}>
       <HeroSection />
-      <ColectionSection />
+      <CollectionSection />
       <TopCreatorsSection />
       <BrowseCategory />
       {/* @ts-ignore */}

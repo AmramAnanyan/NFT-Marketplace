@@ -1,19 +1,19 @@
-import ButtonUI from 'shared/ui/ButtonUI'
-import InputUi from 'shared/ui/InputUI'
-import styles from './index.module.scss'
-import { Link } from 'react-router-dom'
-import { REGISTRATION_FORM } from '../constants'
+import ButtonUI from 'shared/ui/ButtonUI';
+import InputUi from 'shared/ui/InputUI';
+import styles from './index.module.scss';
+import { Link } from 'react-router-dom';
+import { REGISTRATION_FORM } from '../constants';
 
-import useForm from 'shared/hooks/useForm'
-import { useEffect } from 'react'
+import useForm from 'shared/hooks/useForm';
+import { useEffect } from 'react';
 
 const RegistrationForm = () => {
-  const { errors, formData, handleChange, handleSubmit } = useForm()
+  const { errors, formData, handleChange, handleSubmit } = useForm();
   useEffect(() => {
     if (!errors) {
-      console.log('dispatch register form data')
+      console.log('dispatch register form data');
     }
-  }, [errors])
+  }, [errors]);
   return (
     <div className={styles.container}>
       <p>Registration</p>
@@ -26,16 +26,16 @@ const RegistrationForm = () => {
               value={formData[input.name || ''] || ''}
               onChange={handleChange}
             />
-          )
+          );
         })}
-        <div className={styles.socialLoginContainer}>sign up with google</div>
+        <div className={styles.socialLoginContainer}>Sign up with google</div>
         <ButtonUI text='Registration' isLoading={false} type='submit' />
         <Link className={styles.loginLink} to={'/sign-in'}>
           Login
         </Link>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default RegistrationForm
+export default RegistrationForm;

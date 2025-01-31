@@ -19,12 +19,12 @@ class UserController {
       if (errors.isEmpty()) {
         const { userData, token } = await this.userService.createUser(req);
         return res.json({
-          succes: true,
+          success: true,
           token,
           userData
         });
       }
-      res.status(400).json({ succes: false, errors: errors.array() });
+      res.status(400).json({ success: false, errors: errors.array() });
     } catch (err) {
       res.status(500).json({ message: 'Registration error' });
     }
@@ -34,14 +34,14 @@ class UserController {
       const errors = validationResult(req);
       if (errors.isEmpty()) {
         const user = await this.userService.getUserByEmail(req);
-        res.json({ succes: true, token: user?.token });
+        res.json({ success: true, token: user?.token });
       } else {
         res.status(400).json({ succes: false, errors: errors.array() });
       }
     } catch (err) {
       res
         .status(500)
-        .json({ succes: false, message: 'Wrong Email or Password' });
+        .json({ success: false, message: 'Wrong Email or Password' });
     }
   };
 }
