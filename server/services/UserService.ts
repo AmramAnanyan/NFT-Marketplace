@@ -4,7 +4,9 @@ import bcrypt from 'bcrypt';
 import { Types, Document } from 'mongoose';
 import { Request } from 'express';
 import { JWT_SECRET_KEY } from '../config/envVariables';
-
+// all works with request object needed to move controller
+// in service should work only databases without request
+// In controller should work only request and response it is a for client to server work
 interface IUser extends Document {
   _doc?: any;
 }

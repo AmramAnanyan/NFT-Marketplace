@@ -1,7 +1,8 @@
 import express, { Request, Response, Application } from 'express';
-import { User } from './routes';
+import { HomeRouter, User } from './routes';
 import mongoose from 'mongoose';
-import { DATABASE_URL, PORT } from './config/envVariables';
+import { API_BASE_VERSION, DATABASE_URL, PORT } from './config/envVariables';
+import path from 'path';
 mongoose
   .connect(`${DATABASE_URL}`)
   .then(() => {
@@ -14,11 +15,16 @@ class App {
   #app: Application = express();
   #globalMiddleWares() {
     this.#app.use(express.json());
-    this.#app.use(express.urlencoded({ extended: true }));
+    this.#app.use(express.urlencoded({ extended: false }));
+    this.#app.use(
+      `${API_BASE_VERSION}/images`,
+      express.static(path.join(__dirname, 'public', 'images'))
+    );
   }
   #routerMiddleWares() {
-    this.#app.use('/api/v1', User.routers());
-    this.#app.get('/api/v1', (req: Request, res: Response) => {
+    this.#app.use(API_BASE_VERSION, HomeRouter.routers());
+    this.#app.use(API_BASE_VERSION, User.routers());
+    this.#app.get(API_BASE_VERSION, (req: Request, res: Response) => {
       res.send('this is worked with class');
     });
   }

@@ -21,7 +21,7 @@ export const HARD_CODE_NAVIGATION_BAR = [
     isLogin: false,
     path: '/sign-in'
   }
-]
+];
 
 export const HARD_CODE_FOOTER_NAVIGATION = [
   {
@@ -85,4 +85,4 @@ export const HARD_CODE_FOOTER_NAVIGATION = [
       }
     ]
   }
-]
+];
