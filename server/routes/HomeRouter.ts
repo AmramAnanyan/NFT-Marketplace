@@ -1,9 +1,12 @@
 import { Request, Response, Router } from 'express';
+import HomeController from '../controllers/HomeController';
 
 class HomeRouter {
   private router: Router;
+  private controller: HomeController;
   constructor() {
     this.router = Router();
+    this.controller = new HomeController();
   }
   private getTrendingCollections() {
     this.router.get('/trending-collections', (req: Request, res: Response) => {
@@ -11,14 +14,11 @@ class HomeRouter {
       res.send('Hello from module');
     });
   }
-  private getNFTsByUserId() {
-    this.router.get('/trending-user-nft', (req: Request, res: Response) => {
-      const hardCodeUserId = '65d5175572f411c1ca018e94';
-      res.json([]);
-    });
+  private trendingUserNft() {
+    this.router.get('/trending-user-nft', this.controller.getTrendingUserNft);
   }
   public routers() {
-    this.getNFTsByUserId();
+    this.trendingUserNft();
     this.getTrendingCollections();
     return this.router;
   }
