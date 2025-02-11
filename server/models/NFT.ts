@@ -17,4 +17,4 @@ const NFTSchema = new Schema<INFT>({
   creatorId: { type: Types.ObjectId, ref: 'User' }
 });
 
-export default model('nft', NFTSchema);
+export default model('nfts', NFTSchema);

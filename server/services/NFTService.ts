@@ -11,9 +11,7 @@ class NFTService {
         throw new Error('Invalid ObjectId');
       }
 
-      const nfts = await NFTModel.find({
-        creatorId: new Types.ObjectId(id)
-      });
+      const nfts = await NFTModel.find();
       console.log(
         new Types.ObjectId(id),
         nfts,
