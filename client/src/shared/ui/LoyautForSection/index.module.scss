@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: start;
   margin-top: 36px;
-  max-width: 1080px;
+  max-width: 1280px;
   h2 {
     color: white;
     font-size: 42px;
@@ -27,6 +27,7 @@
 }
 .colectionSection {
   display: flex;
+  min-width: var(--desktop-max-width);
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;

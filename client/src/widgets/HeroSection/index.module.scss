@@ -1,9 +1,9 @@
 .container {
-  width: 100%;
+  min-width: var(--desktop-max-width);
   height: auto;
   background-color: var(--color-dark);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 58px;
   @media only screen and (max-width: 450px) {
     display: flex;

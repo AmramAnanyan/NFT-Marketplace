@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { counterSlice } from 'app';
+import trendingUserNfts from 'entities/Home/model/trendUserNft';
 
 export const store = configureStore({
   reducer: {
-    counter: counterSlice.reducer
+    counter: counterSlice.reducer,
+    trendingUserNfts: trendingUserNfts
   }
 });
 

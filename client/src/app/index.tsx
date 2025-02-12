@@ -99,11 +99,11 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      dispatch(fetchPosts(1));
-      // console.log(promise, 'promise');
-    };
-    fetchData();
+    // const fetchData = async () => {
+    //   dispatch(fetchPosts(1));
+    //   // console.log(promise, 'promise');
+    // };
+    // fetchData();
   }, []);
   const obj = {
     name: 'John',
@@ -144,7 +144,7 @@ const App = () => {
     }
   });
   numbers.push(10);
-  console.log(numbers, 'numbers');
+  // console.log(numbers, 'numbers');
   let labels = { _id: 1 };
   labels = new Proxy(labels, {
     deleteProperty(target, property) {

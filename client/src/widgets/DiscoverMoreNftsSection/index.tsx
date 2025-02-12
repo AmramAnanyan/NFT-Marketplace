@@ -1,17 +1,19 @@
-import React from 'react'
-import LoyautForSection from 'shared/ui/LoyautForSection'
-import NftCart from 'shared/ui/NftCart'
+import LayoutForSection from 'shared/ui/LoyautForSection';
+import NftCart from 'shared/ui/NftCart';
 
 const DiscoverMoreNftSection = ({ data }: any) => {
   return (
     <section>
-      <LoyautForSection>
-        <NftCart {...data} />
-        <NftCart {...data} />
-        <NftCart {...data} />
-      </LoyautForSection>
+      <LayoutForSection
+        title='Trending NFTs by Top Creators'
+        description='Discover the hottest NFTs from our top creators and explore exclusive digital assets.'
+      >
+        {data.map((item: any) => {
+          return <NftCart {...item} key={item._id} />;
+        })}
+      </LayoutForSection>
     </section>
-  )
-}
+  );
+};
 
-export default DiscoverMoreNftSection
+export default DiscoverMoreNftSection;

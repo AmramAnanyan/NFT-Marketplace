@@ -1,6 +1,6 @@
-import HomePageModelNFT from 'entities/HomePageNFTModel/ui'
-import { HomePageTitle } from '../../entities'
-import styles from './index.module.scss'
+import HomePageModelNFT from 'entities/HomePageNFTModel/ui';
+import { HomePageTitle } from '../../entities';
+import styles from './index.module.scss';
 
 const HeroSection = () => {
   return (
@@ -8,7 +8,7 @@ const HeroSection = () => {
       <HomePageTitle />
       <HomePageModelNFT />
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

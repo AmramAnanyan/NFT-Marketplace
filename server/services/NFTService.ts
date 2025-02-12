@@ -10,15 +10,7 @@ class NFTService {
       if (!Types.ObjectId.isValid(id)) {
         throw new Error('Invalid ObjectId');
       }
-
-      const nfts = await NFTModel.find();
-      console.log(
-        new Types.ObjectId(id),
-        nfts,
-        'nfts',
-        Types.ObjectId.isValid(id)
-      );
-      return nfts;
+      return await NFTModel.find().populate('creatorId');
     } catch (error: any) {
       console.log(error, 'error');
       throw new DatabaseError(error.message);

@@ -5,20 +5,24 @@ interface ILoyautForSection {
   description?: string;
   children: React.ReactNode;
 }
-const LoyautForSection = ({
+const LayoutForSection = ({
   title,
   description,
   children
 }: ILoyautForSection) => {
   return (
-    <div className={styles.conteiner}>
+    <section className={styles.conteiner}>
       <div className={styles.headingWrraper}>
-        <h2>Trending Collection</h2>
-        <h4>Checkout Our Weekly Updated Trending Collection.</h4>
+        <h2>{title ? title : 'Trending Collection'}</h2>
+        <h4>
+          {description
+            ? description
+            : 'Checkout Our Weekly Updated Trending Collection.'}
+        </h4>
       </div>
       <div className={styles.colectionSection}>{children}</div>
-    </div>
+    </section>
   );
 };
 
-export default LoyautForSection;
+export default LayoutForSection;

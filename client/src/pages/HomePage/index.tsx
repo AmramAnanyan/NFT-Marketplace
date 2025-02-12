@@ -2,27 +2,28 @@ import HeroSection from 'widgets/HeroSection';
 import styles from './index.module.scss';
 import CollectionSection from 'widgets/ColectionSection';
 import TopCreatorsSection from 'widgets/TopCreatorsSection';
-import CategoryCard from 'shared/ui/CategoryCart';
 import BrowseCategory from 'widgets/BrowsCategoriesSection';
 import DiscoverMoreNftSection from 'widgets/DiscoverMoreNftsSection';
 import { IUser } from 'shared/types';
-
-import nftCreatorImage from '../../shared/assets/pngIcon/User.png';
-import InputUi from 'shared/ui/InputUI';
-import PublicAuction from 'entities/PublicAuction';
-
+import PublicAuction from 'entities/Home/ui/PublicAuction';
+import { useEffect } from 'react';
+import { getTrendingUsersNFTsAsync } from 'features/Home/thunks';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+import { useAppSelector } from 'shared/hooks/useAppSelector';
+import { selectTrendingUserNfts } from 'entities/Home/model/trendUserNft';
+interface INftCart {
+  id: string;
+  nftName: string;
+  nftImage: string;
+  nftCreatorName: IUser['name'];
+  nftCreatorImage: IUser['image'];
+  highestBid: number;
+  price: number;
+  cryptoValet: string;
+}
 const HomePage = () => {
-  interface INftCart {
-    id: string;
-    nftName: string;
-    nftImage: string;
-    nftCreatorName: IUser['name'];
-    nftCreatorImage: IUser['image'];
-    highestBid: number;
-    price: number;
-    cryptoValet: string;
-  }
-
+  const dispatch = useAppDispatch();
+  const trendingUserNfts = useAppSelector(selectTrendingUserNfts);
   const nftCartData: INftCart = {
     id: '1',
     nftName: 'Shunik',
@@ -36,14 +37,17 @@ const HomePage = () => {
     cryptoValet: 'ETH'
   };
 
+  useEffect(() => {
+    console.log('worked effect');
+    dispatch(getTrendingUsersNFTsAsync());
+  }, []);
   return (
     <main className={styles.container}>
       <HeroSection />
       <CollectionSection />
       <TopCreatorsSection />
       <BrowseCategory />
-      {/* @ts-ignore */}
-      <DiscoverMoreNftSection data={nftCartData} />
+      <DiscoverMoreNftSection data={trendingUserNfts} />
       <PublicAuction />
     </main>
   );

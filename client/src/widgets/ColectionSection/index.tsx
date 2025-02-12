@@ -1,13 +1,13 @@
 // @ts-nocheck
-import ColectionCart from 'shared/ui/ColectionCart'
-import styles from './index.module.scss'
-import LoyautForSection from 'shared/ui/LoyautForSection'
+import ColectionCart from 'shared/ui/ColectionCart';
+import styles from './index.module.scss';
+import LayoutForSection from 'shared/ui/LoyautForSection';
 interface IColection {
-  id: string
-  colectionName: string
-  colectionImages: Array<any>
-  userName: IUser['name']
-  userImage: IUser['image']
+  id: string;
+  colectionName: string;
+  colectionImages: Array<any>;
+  userName: IUser['name'];
+  userImage: IUser['image'];
 }
 
 const colectData: IColection = {
@@ -21,20 +21,20 @@ const colectData: IColection = {
   ],
   userName: 'user',
   userImage: '../userimage'
-}
+};
 const ColectionSection = () => {
   return (
     <section className={styles.conteiner}>
-      <LoyautForSection>
+      <LayoutForSection>
         <ColectionCart {...colectData} />
         <ColectionCart {...colectData} />
         <ColectionCart {...colectData} />
-      </LoyautForSection>
+      </LayoutForSection>
     </section>
-  )
-}
+  );
+};
 
-export default ColectionSection
+export default ColectionSection;
 
 {
   /* <div className={styles.headingWrraper}>
