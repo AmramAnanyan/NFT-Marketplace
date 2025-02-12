@@ -25,7 +25,7 @@
     padding-bottom: 24px;
     h1 {
       color: white;
-      font-family: sans-serif;
+      ffont-family: var(--font);
       letter-spacing: 1px;
       margin-top: 8px;
     }
@@ -33,7 +33,7 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      margin: 8px 0;
+      margin: 8px 12px;
       .nftCreatorImage {
         width: 32px;
         height: 32px;
@@ -44,20 +44,22 @@
       p {
         color: white;
         letter-spacing: 1px;
-        font-family: sans-serif;
+        ffont-family: var(--font);
         padding-left: 24px;
       }
     }
   }
   .nftPriceSection {
+    width: 100%;
     p {
+      width: 100%;
       color: white;
-      font-family: sans-serif;
+      ffont-family: var(--font);
       margin-top: 8px;
-
+      display: flex;
+      justify-content: space-between;
       span {
-        position: absolute;
-        right: 0;
+        margin: 0 12px;
       }
     }
   }

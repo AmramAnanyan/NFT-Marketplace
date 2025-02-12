@@ -5,14 +5,14 @@
   border-bottom: 2px solid var(--color-grey);
   background-color: transparent;
   font-size: 18px;
-  font-family: sans-serif;
+  ffont-family: var(--font);
   outline: none;
 }
 .labelStyles {
   width: 320px;
   height: 24px;
   font-size: 18px;
-  font-family: sans-serif;
+  ffont-family: var(--font);
   color: var(--color-grey);
   font-weight: bolder;
   letter-spacing: 1px;

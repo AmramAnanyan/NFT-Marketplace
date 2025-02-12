@@ -7,7 +7,7 @@ import {
 const useForm = () => {
   const [formData, setFormData] = useState<{ [key: string]: string }>({});
   const [errors, setError] = useState<{
-    [key: string]: Object | null;
+    [key: string]: any | null;
   } | null>({});
 
   const handleChange = (event: React.SyntheticEvent) => {

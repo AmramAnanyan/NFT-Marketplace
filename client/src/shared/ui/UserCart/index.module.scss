@@ -10,14 +10,14 @@
   align-items: center;
   & h5 {
     font-size: 24px;
-    font-family: sans-serif;
+    ffont-family: var(--font);
     color: white;
     padding-top: 12px;
   }
   & p {
     color: #6b6b6b;
     font-size: 18px;
-    font-family: sans-serif;
+    ffont-family: var(--font);
     padding-top: 12px;
     & span {
       color: white;

@@ -5,12 +5,11 @@ import { Types } from 'mongoose';
 class NFTService {
   private NFTModel = NFTModel;
   async getNFTsByCreatorId(id: INFT['id']) {
-    console.log('Querying NFTs with creatorId:', id);
     try {
       if (!Types.ObjectId.isValid(id)) {
         throw new Error('Invalid ObjectId');
       }
-      return await NFTModel.find().populate('creatorId');
+      return await NFTModel.find().populate('creator');
     } catch (error: any) {
       console.log(error, 'error');
       throw new DatabaseError(error.message);

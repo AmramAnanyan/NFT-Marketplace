@@ -1,5 +1,4 @@
 import { IUser } from 'shared/types';
-import nftImage from '../../assets/pngIcon/PaintBrush.png';
 import styles from './index.module.scss';
 import { BASE_DEVELOPMENT_URL } from 'shared/constants/generic';
 
@@ -12,18 +11,20 @@ interface INftCart {
   highestBid: number;
   price: number;
   cryptoValet: string;
+  creator: any;
 }
 
-const nftCartData: INftCart = {
-  id: '1',
-  nftName: 'Shunik',
-  image: '',
-  nftCreatorName: 'Valod',
-  nftCreatorImage: '',
-  highestBid: 0.35,
-  price: 1.35,
-  cryptoValet: 'ETH'
-};
+// const nftCartData: INftCart = {
+//   id: '1',
+//   nftName: 'Shunik',
+//   image: '',
+//   nftCreatorName: 'Valod',
+//   nftCreatorImage: '',
+//   highestBid: 0.35,
+//   price: 1.35,
+//   cryptoValet: 'ETH'
+//   creator:{}
+// };
 const NftCart = ({
   id,
   nftName,
@@ -32,7 +33,8 @@ const NftCart = ({
   nftCreatorImage,
   highestBid,
   price,
-  cryptoValet
+  cryptoValet,
+  creator
 }: INftCart) => {
   console.log(image);
   console.log(BASE_DEVELOPMENT_URL, 'BASE_DEVELOPMENT_URL');
@@ -51,20 +53,25 @@ const NftCart = ({
         <div className={styles.nftCreatorSection}>
           <div
             className={styles.nftCreatorImage}
-            style={{ backgroundImage: `url(${nftCreatorImage})` }}
+            style={{
+              backgroundImage: `url(${
+                BASE_DEVELOPMENT_URL + creator?.avatarUrl
+              })`
+            }}
           ></div>
-          <p>{nftCreatorName}</p>
+          <p>{creator?.name}</p>
         </div>
         <div className={styles.nftPriceSection}>
           <p>
-            Price
+            <span> Price</span>
+
             <span>
               {price}
               {cryptoValet}
             </span>
           </p>
           <p>
-            Highest Bid
+            <span>Highest Bid</span>
             <span>
               {highestBid}
               {cryptoValet}

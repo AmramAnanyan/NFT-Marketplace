@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   p {
-    font-family: sans-serif;
+    ffont-family: var(--font);
     font-size: 32px;
     margin-top: 24px;
     color: var(--color-purple);
@@ -36,7 +36,7 @@
     margin-top: 24px;
     color: var(--color-purple);
     text-align: center;
-    font-family: sans-serif;
+    ffont-family: var(--font);
     font-size: 24px;
     cursor: pointer;
   }
@@ -47,5 +47,5 @@
   font-size: 18px;
   color: var(--color-purple);
   font-weight: bold;
-  font-family: sans-serif;
+  ffont-family: var(--font);
 }

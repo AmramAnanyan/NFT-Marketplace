@@ -48,7 +48,7 @@
       content: 'More';
       font-size: 24px;
       font-weight: bold;
-      font-family: sans-serif;
+      ffont-family: var(--font);
       z-index: 10;
       position: absolute;
       top: 34%;
@@ -58,7 +58,7 @@
 }
 
 .colectionName {
-  font-family: sans-serif;
+  ffont-family: var(--font);
   font-size: 20px;
   color: white;
   margin-top: 24px;

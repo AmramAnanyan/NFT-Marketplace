@@ -5,7 +5,7 @@ export interface INFT extends Document {
   description: string;
   image: string;
   price: number;
-  creatorId?: Types.ObjectId;
+  creator?: Types.ObjectId;
 }
 
 const NFTSchema = new Schema<INFT>({
@@ -14,7 +14,7 @@ const NFTSchema = new Schema<INFT>({
   description: { type: String, required: true },
   image: { type: String, required: true },
   price: { type: Number, required: true },
-  creatorId: { type: Types.ObjectId, ref: 'User' }
+  creator: { type: Types.ObjectId, ref: 'User' }
 });
 
 export default model('nfts', NFTSchema);

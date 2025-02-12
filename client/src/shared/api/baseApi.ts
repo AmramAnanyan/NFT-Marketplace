@@ -1,16 +1,20 @@
+import { BASE_DEVELOPMENT_URL } from 'shared/constants/generic';
+
 class BaseApi {
-  private baseUrl = 'http://localhost:8080';
-  headers: Headers;
+  private baseUrl = BASE_DEVELOPMENT_URL;
+  private headers: Headers;
   prefix: string;
+  private isForm: boolean = false;
 
   constructor(prefix: string) {
     this.headers = new Headers();
-    this.initHeaders();
     this.prefix = prefix;
   }
 
   private initHeaders() {
-    this.headers.append('Content-Type', 'application/json');
+    if (!this.isForm) {
+      this.headers.append('Content-Type', 'application/json');
+    }
   }
 
   public setAdditionalHeaders(key: string, value: string) {
@@ -21,27 +25,44 @@ class BaseApi {
     try {
       return await response.json();
     } catch (error) {
-      console.error('Error parsing response:', error);
       throw new Error('Failed to parse response');
     }
   }
-
+  private handleRequestBody(body: any): string | null {
+    if (!this.isForm && body) {
+      return JSON.stringify(body);
+    }
+    return null;
+  }
   private async handleFetch(
     url: string,
-    method: string = 'GET'
+    method: string = 'GET',
+    body?: any
   ): Promise<Response> {
+    const bodyData = this.handleRequestBody(body);
+    this.initHeaders();
     return fetch(`${this.baseUrl}/${this.prefix}/${url}`, {
       headers: this.headers,
-      method
+      method,
+      ...(bodyData && { body: bodyData })
     });
   }
-
   public async get(url: string): Promise<any> {
     try {
       const response = await this.handleFetch(url, 'GET');
       return this.handleResponse(response);
     } catch (error) {
-      console.error('Fetch error:', error);
+      throw error;
+    }
+  }
+  public async post(url: string, body: any, isForm?: boolean): Promise<any> {
+    if (isForm) {
+      this.isForm = isForm;
+    }
+    try {
+      const response = await this.handleFetch(url, 'POST', body);
+      return this.handleResponse(response);
+    } catch (error) {
       throw error;
     }
   }

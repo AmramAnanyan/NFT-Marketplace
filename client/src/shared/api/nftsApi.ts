@@ -1,6 +1,6 @@
 import BaseApi from './baseApi';
 
-const http = new BaseApi('api/v1');
+const http = new BaseApi('');
 
 export const fetchTrendingUserNFTs = () => {
   return http.get('/trending-user-nft');

@@ -6,6 +6,7 @@ import { REGISTRATION_FORM } from '../constants';
 
 import useForm from 'shared/hooks/useForm';
 import { useEffect } from 'react';
+import ErrorField from 'shared/ui/InputError';
 
 const RegistrationForm = () => {
   const { errors, formData, handleChange, handleSubmit } = useForm();
@@ -14,18 +15,28 @@ const RegistrationForm = () => {
       console.log('dispatch register form data');
     }
   }, [errors]);
+  console.log(formData, 'form data');
   return (
     <div className={styles.container}>
       <p>Registration</p>
       <form onSubmit={handleSubmit}>
         {REGISTRATION_FORM.map((input) => {
           return (
-            <InputUi
-              key={input.id}
-              {...input}
-              value={formData[input.name || ''] || ''}
-              onChange={handleChange}
-            />
+            <>
+              <InputUi
+                key={input.id}
+                {...input}
+                value={formData[input.name || ''] || ''}
+                onChange={handleChange}
+              />
+              {errors && (
+                <ErrorField
+                  message={
+                    errors[input.name || ''] && errors[input.name || '']?.msg
+                  }
+                ></ErrorField>
+              )}
+            </>
           );
         })}
         <div className={styles.socialLoginContainer}>Sign up with google</div>
