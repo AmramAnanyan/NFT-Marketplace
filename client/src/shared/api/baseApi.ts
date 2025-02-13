@@ -41,7 +41,7 @@ class BaseApi {
   ): Promise<Response> {
     const bodyData = this.handleRequestBody(body);
     this.initHeaders();
-    return fetch(`${this.baseUrl}/${this.prefix}/${url}`, {
+    return fetch(`${this.baseUrl}${this.prefix}${url}`, {
       headers: this.headers,
       method,
       ...(bodyData && { body: bodyData })

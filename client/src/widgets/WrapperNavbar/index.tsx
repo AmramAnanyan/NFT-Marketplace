@@ -5,11 +5,11 @@ import {
 } from 'shared/constants/navigation';
 import Footer from 'shared/ui/Footer';
 import NavBar from 'shared/ui/NavBar';
-
+import styles from './index.module.scss';
 const WrapperNavbar = () => {
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <NavBar
           navigations={HARD_CODE_NAVIGATION_BAR}
           brand={{ title: 'NFT Marketplace' }}
