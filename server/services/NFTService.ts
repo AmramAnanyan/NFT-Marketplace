@@ -11,7 +11,6 @@ class NFTService {
       }
       return await NFTModel.find().populate('creator');
     } catch (error: any) {
-      console.log(error, 'error');
       throw new DatabaseError(error.message);
     }
   }

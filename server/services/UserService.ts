@@ -1,13 +1,15 @@
 import jwt from 'jsonwebtoken';
-import UserModel from '../models/User';
+import UserModel, { IUser } from '../models/User';
 import bcrypt from 'bcrypt';
 import { Types, Document } from 'mongoose';
 import { Request } from 'express';
 import { JWT_SECRET_KEY } from '../config/envVariables';
+import DatabaseError from '../errors/DatabaseError';
+import HttpError from '../errors/HttpError';
 // all works with request object needed to move controller
 // in service should work only databases without request
 // In controller should work only request and response it is a for client to server work
-interface IUser extends Document {
+interface IDBUser extends Document {
   _doc?: any;
 }
 
@@ -20,7 +22,6 @@ class UserService {
   verifyToken(token: string) {
     try {
       const decode = jwt.verify(token, JWT_SECRET_KEY);
-      console.log(decode, 'decode');
       return token;
     } catch (err) {
       throw new Error('Not verifyied');
@@ -39,27 +40,40 @@ class UserService {
       throw new Error('Data hashing Error');
     }
   }
-  async createUser(req: Request): Promise<any> {
+  async createUser(userPayload: IUser): Promise<any> {
+    let existUser: null | Document | HttpError = null;
+    existUser = await this.checkExistEmail(userPayload.email);
+    if (existUser instanceof HttpError) {
+      throw existUser;
+    }
     try {
-      const hashedPassord = await this.dataHashing(req.body.password);
+      const hashedPassword = await this.dataHashing(userPayload.password);
       const doc: Document = new UserModel({
-        email: req.body.email,
-        passwordHash: hashedPassord
+        name: userPayload.name,
+        email: userPayload.email,
+        password: hashedPassword
       });
-
-      const user: IUser = await doc.save();
-
+      const user: IDBUser = await doc.save();
       const token = this.authorizeJWT(user._id);
-
       const { passwordHash, ...userData } = user._doc;
       return { userData, token };
     } catch (err) {
-      throw new Error('User creation Error');
+      throw new DatabaseError('User creation Error');
     }
   }
-  async getUserByEmail(req: Request) {
-    console.log('worked getUserByEmail');
-    const { email, password } = req.body;
+  async checkExistEmail(email: string) {
+    try {
+      const user = await UserModel.findOne({ email });
+      if (user) {
+        return new HttpError(422, 'User already exist');
+      }
+      return null;
+    } catch (error) {
+      throw new DatabaseError('Could not get operation');
+    }
+  }
+  async getUserByEmail(userForm: Request) {
+    const { email, password } = userForm.body;
     try {
       const userData = await UserModel.findOne({ email });
       const isValidPassword = await bcrypt.compare(

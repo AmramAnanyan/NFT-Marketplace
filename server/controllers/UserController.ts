@@ -14,10 +14,11 @@ class UserController {
     this.userService = new UserService();
   }
   signUp = async (req: Request, res: Response) => {
+    const userForm = req.body;
     try {
       const errors: Result<ValidationError> = validationResult(req);
       if (errors.isEmpty()) {
-        const { userData, token } = await this.userService.createUser(req);
+        const { userData, token } = await this.userService.createUser(userForm);
         return res.json({
           success: true,
           token,

@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
-
-const UserSchema = new mongoose.Schema(
+export interface IUser {
+  email: string;
+  name?: string;
+  password: string;
+  avatarUrl?: string;
+}
+const UserSchema = new mongoose.Schema<IUser>(
   {
     email: {
       type: String,
@@ -8,8 +13,8 @@ const UserSchema = new mongoose.Schema(
       unique: true
     },
     name: { type: String, required: true },
-    passwordHash: {
-      type: String, // Add the 'type' property here
+    password: {
+      type: String,
       required: true
     },
     avatarUrl: String

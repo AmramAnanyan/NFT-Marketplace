@@ -10,7 +10,7 @@ class UserRouter {
   private signUp() {
     this.router.post(
       '/sign-up',
-      UserValidation.registeration,
+      UserValidation.registration,
       UserController.signUp
     );
   }

@@ -1,6 +1,7 @@
 import { body } from 'express-validator';
 
-export const registeration = [
+export const registration = [
+  body('name').not().isEmpty(),
   body('email').isEmail().withMessage('Wrong Email type'),
   body('password')
     .isLength({ min: 5 })
