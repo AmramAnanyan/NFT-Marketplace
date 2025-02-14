@@ -1,12 +1,13 @@
-import { SpikeRollLoader } from '../NavBar/Loaders'
-import styles from './index.module.scss'
+import { SpikeRollLoader } from '../NavBar/Loaders';
+import styles from './index.module.scss';
 export interface IButtonUI {
-  classN?: string
-  isLoading: boolean
-  text: string
-  type?: 'submit' | 'reset' | undefined
-  leftIconSrc?: string
-  rightIconSrc?: string
+  classN?: string;
+  isLoading: boolean;
+  text: string;
+  type?: 'submit' | 'reset' | undefined;
+  leftIconSrc?: string;
+  rightIconSrc?: string;
+  onClick(): void;
 }
 const ButtonUI = ({
   isLoading = false,
@@ -14,10 +15,15 @@ const ButtonUI = ({
   text,
   type,
   rightIconSrc = '',
-  classN
+  classN,
+  onClick
 }: IButtonUI) => {
   return (
-    <button className={`${styles.buttonContainer} ${classN}`} type={type}>
+    <button
+      className={`${styles.buttonContainer} ${classN}`}
+      type={type}
+      onClick={onClick}
+    >
       {isLoading ? (
         <SpikeRollLoader />
       ) : (
@@ -28,7 +34,7 @@ const ButtonUI = ({
         </>
       )}
     </button>
-  )
-}
+  );
+};
 
-export default ButtonUI
+export default ButtonUI;

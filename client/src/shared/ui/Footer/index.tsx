@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
-import { IFooter } from 'shared/types'
-import styles from './index.module.scss'
-import InputUi from '../InputUI'
-import ButtonUI from '../ButtonUI'
-import { SyntheticEvent } from 'react'
-import githubIcone from '../../assets/pngIcon/githubIcon.png'
-import linkedinIcone from '../../assets/pngIcon/linkedinIcon.png'
+import { Link } from 'react-router-dom';
+import { IFooter } from 'shared/types';
+import styles from './index.module.scss';
+import InputUi from '../InputUI';
+import ButtonUI from '../ButtonUI';
+import { SyntheticEvent } from 'react';
+import githubIcone from '../../assets/pngIcon/githubIcon.png';
+import linkedinIcone from '../../assets/pngIcon/linkedinIcon.png';
 
 const Footer = ({ navigations }: IFooter) => {
   return (
@@ -29,7 +29,7 @@ const Footer = ({ navigations }: IFooter) => {
                             onChange={function (
                               event: SyntheticEvent<Element, Event>
                             ): void {
-                              throw new Error('Function not implemented.')
+                              throw new Error('Function not implemented.');
                             }}
                             value={''}
                             classN={styles.subscribeInput}
@@ -38,19 +38,22 @@ const Footer = ({ navigations }: IFooter) => {
                             isLoading={false}
                             text={'Subscribe'}
                             classN={styles.subscribeButton}
+                            onClick={function (): void {
+                              throw new Error('Function not implemented.');
+                            }}
                           />
                         </div>
-                      )
+                      );
                     }
                     return (
                       <li key={id}>
                         <Link to={path}>{title}</Link>
                       </li>
-                    )
+                    );
                   })}
                 </ul>
               </>
-            )
+            );
           })}
         </div>
       </div>
@@ -73,7 +76,7 @@ const Footer = ({ navigations }: IFooter) => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

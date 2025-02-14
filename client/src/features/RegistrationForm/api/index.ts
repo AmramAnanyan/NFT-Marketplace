@@ -6,6 +6,9 @@ const http = new BaseApi('');
 export const fetchUserRegistration = (
   registRationFields: Record<string, any>
 ) => {
-  console.log(registRationFields, 'registartion fields');
-  return http.post('/sign-up', true);
+  const form = new URLSearchParams();
+  for (let key in registRationFields) {
+    form.append(key, registRationFields[key]);
+  }
+  return http.post('/sign-up', form, true);
 };

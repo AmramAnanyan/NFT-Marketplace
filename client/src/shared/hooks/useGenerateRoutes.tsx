@@ -3,6 +3,7 @@ import HomePage from 'pages/HomePage';
 import { RouteObject } from 'react-router';
 import { HARD_CODE_ROUTES } from 'shared/constants/routes';
 import ProtectedRoute from 'shared/ui/ProtectedRoute';
+import ToastProvider from 'shared/ui/Toast/ToastProvider';
 import WrapperNavbar from 'widgets/WrapperNavbar';
 
 const useGenerateRoutes = () => {
@@ -18,7 +19,9 @@ const useGenerateRoutes = () => {
       path: path,
       element: (
         <ProtectedRoute isPrivate={isPrivate}>
-          <Component />
+          <ToastProvider>
+            <Component />
+          </ToastProvider>
         </ProtectedRoute>
       )
     });

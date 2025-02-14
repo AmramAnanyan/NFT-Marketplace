@@ -20,6 +20,9 @@ const HomePageTitle = () => {
         isLoading={false}
         text='Get Started'
         leftIconSrc={RocketLaunch}
+        onClick={function (): void {
+          throw new Error('Function not implemented.');
+        }}
       />
       <ul>
         {statisticDate.map((item) => {

@@ -1,5 +1,5 @@
-import { lazy } from 'react'
-import { RouteType } from 'shared/types/routeType'
+import { lazy } from 'react';
+import { RouteType } from 'shared/types/routeType';
 
 export const HARD_CODE_ROUTES: Array<RouteType> = [
   {
@@ -19,5 +19,11 @@ export const HARD_CODE_ROUTES: Array<RouteType> = [
     props: null,
     component: lazy(() => import('pages/RegistrationPage')),
     isPrivate: false
+  },
+  {
+    path: '/profile',
+    props: null,
+    component: lazy(() => import('pages/UserPage')),
+    isPrivate: false
   }
-]
+];

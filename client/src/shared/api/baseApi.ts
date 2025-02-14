@@ -32,7 +32,7 @@ class BaseApi {
     if (!this.isForm && body) {
       return JSON.stringify(body);
     }
-    return null;
+    return body;
   }
   private async handleFetch(
     url: string,

@@ -1,0 +1,71 @@
+@keyframes slideIn {
+  to {
+    transform: translateX(-15%);
+    opacity: 1;
+  }
+  from {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+
+.toast_wrapper {
+  width: 320px;
+  height: 64px;
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  z-index: 12;
+  background-color: white;
+  padding: 12px;
+  border-radius: 5px;
+  transform: translateX(-15%);
+  animation: slideIn 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.success {
+  border: 1px solid green;
+  width: 100%;
+  height: 100%;
+  color: green;
+}
+.error {
+  border: 1px solid red;
+  width: 100%;
+  height: 100%;
+  color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  background-color: #eee;
+  //   border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--dark-purple);
+
+  /* Animation */
+  animation: progressAnimation 2s linear;
+}
+
+@keyframes progressAnimation {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

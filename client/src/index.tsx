@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import App from './app/index';
 import { Provider } from 'react-redux';
 import { store } from 'app/store';
+import ToastProvider from 'shared/ui/Toast/ToastProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
