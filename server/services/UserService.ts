@@ -14,21 +14,22 @@ interface IDBUser extends Document {
 }
 
 class UserService {
-  createToken(id: string | Types.ObjectId) {
-    return jwt.sign({ id }, JWT_SECRET_KEY, {
+  createToken(id: string | Types.ObjectId, password: string, email: string) {
+    return jwt.sign({ id, password, email }, JWT_SECRET_KEY, {
       expiresIn: '7d'
     });
   }
   verifyToken(token: string) {
     try {
       const decode = jwt.verify(token, JWT_SECRET_KEY);
+      console.log(decode, ' decoded token');
       return token;
     } catch (err) {
       throw new Error('Not verifyied');
     }
   }
-  authorizeJWT(str: string | Types.ObjectId) {
-    return this.verifyToken(this.createToken(str));
+  authorizeJWT(id: string | Types.ObjectId, email: string, password: string) {
+    return this.verifyToken(this.createToken(id, password, email));
   }
 
   async dataHashing(str: string): Promise<string | Error> {
@@ -54,8 +55,9 @@ class UserService {
         password: hashedPassword
       });
       const user: IDBUser = await doc.save();
-      const token = this.authorizeJWT(user._id);
-      const { passwordHash, ...userData } = user._doc;
+      //@ts-ignore
+      const token = this.authorizeJWT(user._id, doc.email, doc.password);
+      const { password, ...userData } = user._doc;
       return { userData, token };
     } catch (err) {
       throw new DatabaseError('User creation Error');
@@ -72,18 +74,22 @@ class UserService {
       throw new DatabaseError('Could not get operation');
     }
   }
-  async getUserByEmail(userForm: Request) {
-    const { email, password } = userForm.body;
+  async getUserByEmail(userForm: IUser) {
+    const { email, password } = userForm;
     try {
       const userData = await UserModel.findOne({ email });
-      const isValidPassword = await bcrypt.compare(
-        password,
-        //@ts-ignore
-        userData.passwordHash
-      );
-      if (userData && isValidPassword) {
-        const token = this.authorizeJWT(userData._id);
-        return { token, userData };
+      if (!userData) {
+        throw new HttpError(422, 'User is not found');
+      }
+      //@ts-ignore
+      const isValidPassword = await bcrypt.compare(password, userData.password);
+      if (isValidPassword) {
+        const token = this.authorizeJWT(
+          userData._id,
+          userData.email,
+          userData.password
+        );
+        return { success: true, token, userData };
       } else {
         throw new Error('User is not found');
       }

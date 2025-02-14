@@ -4,6 +4,7 @@ import { Result, ValidationError, validationResult } from 'express-validator';
 import UserModel from '../models/User';
 import { Document } from 'mongoose';
 import bcrypt from 'bcrypt';
+import HttpError from '../errors/HttpError';
 interface IUser extends Document {
   _doc?: any;
 }
@@ -19,14 +20,21 @@ class UserController {
       const errors: Result<ValidationError> = validationResult(req);
       if (errors.isEmpty()) {
         const { userData, token } = await this.userService.createUser(userForm);
-        return res.json({
-          success: true,
-          token,
-          userData
-        });
+        return res
+          .json({
+            success: true,
+            token,
+            userData
+          })
+          .cookie('privateToken', token);
       }
       res.status(400).json({ success: false, errors: errors.array() });
     } catch (err) {
+      if (err instanceof HttpError) {
+        return res
+          .status(err.statusCode)
+          .json({ success: false, message: err.message });
+      }
       res.status(500).json({ message: 'Registration error' });
     }
   };
@@ -34,10 +42,10 @@ class UserController {
     try {
       const errors = validationResult(req);
       if (errors.isEmpty()) {
-        const user = await this.userService.getUserByEmail(req);
+        const user = await this.userService.getUserByEmail(req.body);
         res.json({ success: true, token: user?.token });
       } else {
-        res.status(400).json({ succes: false, errors: errors.array() });
+        res.status(400).json({ success: false, errors: errors.array() });
       }
     } catch (err) {
       res
