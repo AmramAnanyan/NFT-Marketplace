@@ -5,12 +5,12 @@ export const registration = [
   body('email').isEmail().withMessage('Wrong Email type'),
   body('password')
     .isLength({ min: 5 })
-    .withMessage('Password must be more than 5 charachter'),
+    .withMessage('Password must be more than 5 character'),
   body('avatarUrl').optional().isURL().withMessage('Wrong url type')
 ];
 export const login = [
   body('email').isEmail().withMessage('Wrong Email type'),
   body('password')
     .isLength({ min: 5 })
-    .withMessage('Password must be more than 5 charachter')
+    .withMessage('Password must be more than 5 character')
 ];

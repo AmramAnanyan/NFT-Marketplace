@@ -1,7 +1,7 @@
 import ButtonUI from 'shared/ui/ButtonUI';
 import InputUi from 'shared/ui/InputUI';
 import styles from './index.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { REGISTRATION_FORM } from '../constants';
 
 import useForm from 'shared/hooks/useForm';
@@ -12,6 +12,7 @@ import { userRegistrationAsync } from '../thunks';
 import { toast } from 'shared/ui/Toast/utils';
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
   const { errors, formData, handleChange, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -24,6 +25,8 @@ const RegistrationForm = () => {
     if (!data?.success) {
       console.log('data ===>> erorr', data);
       toast().error(data.message);
+    } else {
+      navigate('/profile');
     }
   };
 
