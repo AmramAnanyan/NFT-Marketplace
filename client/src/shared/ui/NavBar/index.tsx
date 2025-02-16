@@ -11,10 +11,10 @@ const NavBar = ({ brand, navigations }: INavBar) => {
   const { innerWidth } = useWindowSize();
   const [isActive, setIsActive] = useState(false);
   let mobileTab = innerWidth < 450 ? '_mobile' : '';
+
   const handleBurgerMenuClick = () => {
     setIsActive(!isActive);
   };
-
   return (
     <nav className={`${styles.conteiner_navbar}`}>
       <div className={styles.logo}>
@@ -38,7 +38,7 @@ const NavBar = ({ brand, navigations }: INavBar) => {
           if (isAuthenticated && path === '/sign-in') {
             return (
               <li key={id}>
-                <NavLink to={path}>Sign out</NavLink>
+                <NavLink to='/profile'>Profile</NavLink>
                 {path === '/sign-in' && (
                   <img src={userLogo} alt='' className={styles.userLogo} />
                 )}

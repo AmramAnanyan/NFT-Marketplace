@@ -1,13 +1,14 @@
-import UserOnlineStatus from '../UserOnlineStatus'
-import styles from './index.module.scss'
-import { IUser } from 'shared/types'
+import UserOnlineStatus from '../UserOnlineStatus';
+import styles from './index.module.scss';
+import { IUser } from 'shared/types';
 interface IUserCart {
-  id: IUser['id']
-  index?: number
-  name: IUser['name']
-  image: IUser['image']
-  totalSales: IUser['totalSales']
-  active?: boolean
+  id: IUser['id'];
+  index?: number;
+  name: IUser['name'];
+  image: IUser['image'];
+  totalSales: IUser['totalSales'];
+  active?: boolean;
+  className?: string;
 }
 const userData: IUserCart = {
   id: '1',
@@ -17,10 +18,10 @@ const userData: IUserCart = {
     'https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-89@2x.png',
   totalSales: '35.45 ETH',
   active: true
-}
-const UserCart = () => {
+};
+const UserCart = ({ className }: { className?: IUserCart['className'] }) => {
   return (
-    <div className={styles.conteiner}>
+    <div className={`${styles.conteiner} ${className || ''}`}>
       <span className={styles.rank}>{userData.index}</span>
       {userData.active && (
         <UserOnlineStatus classN={styles.pulse} online={false} />
@@ -36,7 +37,7 @@ const UserCart = () => {
         Total Sales: <span>{userData.totalSales}</span>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default UserCart
+export default UserCart;

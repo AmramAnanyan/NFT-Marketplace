@@ -1,0 +1,19 @@
+.filter_products {
+  display: flex;
+  background-color: var(--color-grey);
+  height: 52px;
+  justify-content: space-around;
+  align-items: center;
+}
+.category_button {
+  font-family: var(--font);
+  color: var(--cool-blue);
+  font-size: 22px;
+  border-bottom: 2px solid var(--cool-blue);
+  cursor: pointer;
+}
+
+.selected_category {
+  color: var(--color-purple);
+  border-bottom: 2px solid var(--color-purple);
+}
