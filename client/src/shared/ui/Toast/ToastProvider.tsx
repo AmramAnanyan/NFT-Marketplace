@@ -11,7 +11,6 @@ import { TOAST_MESSAGES } from './utils';
 import Success from './success';
 import Error from './error';
 const renderByStatus = (status: string, message: string) => {
-  console.log(status, 'status hahah');
   switch (status) {
     case TOAST_MESSAGES.SUCCESS:
       return <Success message={message} />;
@@ -30,7 +29,6 @@ const ToastProvider: FC<{ children: any }> = ({ children }) => {
 
   useEffect(() => {
     const handleEventListener = (e: any) => {
-      console.log(e?.detail, 'e ==>>');
       if (e) {
         setOpenTost({ type: e?.type, message: e?.detail?.message });
       }

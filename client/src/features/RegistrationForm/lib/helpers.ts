@@ -1,6 +1,5 @@
 export const formValidation = (form: [key: string]) => {
   const error: { [key: string]: string } = {};
-  console.log(form, 'form');
   const formInputs = Object.keys(form);
   formInputs.forEach((inputType) => {
     switch (inputType) {
@@ -8,7 +7,6 @@ export const formValidation = (form: [key: string]) => {
         error[inputType] = '';
         break;
       case 'surname':
-        console.log(22222);
         break;
       default:
     }

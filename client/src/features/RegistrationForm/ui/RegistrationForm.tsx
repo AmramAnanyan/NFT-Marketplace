@@ -10,11 +10,13 @@ import ErrorField from 'shared/ui/InputError';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { userRegistrationAsync } from '../thunks';
 import { toast } from 'shared/ui/Toast/utils';
+import { useAuth } from 'shared/hooks/useAuth';
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
   const { errors, formData, handleChange, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
+  const { setToken } = useAuth();
   useEffect(() => {
     if (!errors) {
       console.log('dispatch register form data');
@@ -26,6 +28,7 @@ const RegistrationForm = () => {
       console.log('data ===>> erorr', data);
       toast().error(data.message);
     } else {
+      setToken(data.token);
       navigate('/profile');
     }
   };

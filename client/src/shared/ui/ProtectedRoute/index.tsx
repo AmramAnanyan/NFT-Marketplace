@@ -1,15 +1,17 @@
-import { Navigate, useNavigate } from 'react-router'
-interface Iprops {
-  isPrivate: boolean
-  children: any
+import { Navigate, useNavigate } from 'react-router';
+import { useAuth } from 'shared/hooks/useAuth';
+interface IProps {
+  isPrivate: boolean;
+  children: any;
 }
-const ProtectedRoute = ({ isPrivate, children }: Iprops) => {
-  const navigate = useNavigate()
-  if (isPrivate) {
-    // needed check token
-    return <Navigate to='/' replace />
+const ProtectedRoute = ({ isPrivate, children }: IProps) => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  console.log(isAuthenticated, 'is auth ====>>');
+  if (isPrivate && !isAuthenticated) {
+    return <Navigate to='/' replace />;
   }
-  return <div>{children}</div>
-}
+  return <div>{children}</div>;
+};
 
-export default ProtectedRoute
+export default ProtectedRoute;

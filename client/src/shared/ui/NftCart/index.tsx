@@ -36,9 +36,6 @@ const NftCart = ({
   cryptoValet,
   creator
 }: INftCart) => {
-  console.log(image);
-  console.log(BASE_DEVELOPMENT_URL, 'BASE_DEVELOPMENT_URL');
-  console.log(`url(${image})`, 'xi arararra');
   return (
     <div className={styles.container}>
       <img

@@ -24,6 +24,6 @@ export const HARD_CODE_ROUTES: Array<RouteType> = [
     path: '/profile',
     props: null,
     component: lazy(() => import('pages/UserPage')),
-    isPrivate: false
+    isPrivate: true
   }
 ];

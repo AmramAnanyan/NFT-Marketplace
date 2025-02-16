@@ -4,8 +4,10 @@ import userLogo from 'shared/assets/pngIcon/User.png';
 import { INavBar } from 'shared/types';
 import useWindowSize from 'shared/hooks/useWindowSize';
 import { useState } from 'react';
+import { useAuth } from 'shared/hooks/useAuth';
 
 const NavBar = ({ brand, navigations }: INavBar) => {
+  const { isAuthenticated } = useAuth();
   const { innerWidth } = useWindowSize();
   const [isActive, setIsActive] = useState(false);
   let mobileTab = innerWidth < 450 ? '_mobile' : '';
@@ -33,6 +35,16 @@ const NavBar = ({ brand, navigations }: INavBar) => {
         }`}
       >
         {navigations.map(({ id, title, path }) => {
+          if (isAuthenticated && path === '/sign-in') {
+            return (
+              <li key={id}>
+                <NavLink to={path}>Sign out</NavLink>
+                {path === '/sign-in' && (
+                  <img src={userLogo} alt='' className={styles.userLogo} />
+                )}
+              </li>
+            );
+          }
           return (
             <li key={id}>
               <NavLink to={path}>{title}</NavLink>

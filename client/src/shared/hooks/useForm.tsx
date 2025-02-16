@@ -31,7 +31,6 @@ const useForm = () => {
     setFormData({});
     setError({});
   };
-  console.log(errors, 'errors');
   return { formData, errors, handleChange, handleSubmit, resetForm };
 };
 

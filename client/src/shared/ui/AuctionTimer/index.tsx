@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import styles from './index.module.scss'
+import { useEffect, useRef, useState } from 'react';
+import styles from './index.module.scss';
 export interface ITimer {
-  title?: string
-  hours: number
-  minutes: number
-  seconds: number
+  title?: string;
+  hours: number;
+  minutes: number;
+  seconds: number;
 }
 const AuctionTimer = ({ title, hours, minutes, seconds }: ITimer) => {
+  const idInterval = useRef<any>(null);
   const [timerState, setTimerState] = useState({
     seconds,
     minutes,
     hours
-  })
-  const [isClosedAuction, setIsClosedAuction] = useState(false)
+  });
+  const [isClosedAuction, setIsClosedAuction] = useState(false);
   useEffect(() => {
-    let idInterval = setTimeout(() => {
+    idInterval.current = setTimeout(() => {
       setTimerState((prevState) => {
         return {
           ...prevState,
           seconds: prevState.seconds--
-        }
-      })
+        };
+      });
       if (timerState.hours === 0) {
-        setIsClosedAuction(true)
+        setIsClosedAuction(true);
       }
       if (timerState.seconds === 0) {
         setTimerState((prevState) => {
@@ -30,8 +31,8 @@ const AuctionTimer = ({ title, hours, minutes, seconds }: ITimer) => {
             ...prevState,
             seconds: 59,
             minutes: prevState.minutes - 1
-          }
-        })
+          };
+        });
       }
       if (timerState.minutes === 0) {
         setTimerState((prevState) => {
@@ -39,14 +40,14 @@ const AuctionTimer = ({ title, hours, minutes, seconds }: ITimer) => {
             ...prevState,
             minutes: 59,
             hours: prevState.hours - 1
-          }
-        })
+          };
+        });
       }
-    }, 1000)
+    }, 1000);
     return () => {
-      clearInterval(idInterval)
-    }
-  }, [timerState])
+      clearInterval(idInterval.current);
+    };
+  }, [timerState]);
 
   return (
     <>
@@ -70,7 +71,7 @@ const AuctionTimer = ({ title, hours, minutes, seconds }: ITimer) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default AuctionTimer
+export default AuctionTimer;

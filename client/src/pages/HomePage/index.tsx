@@ -38,7 +38,6 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    console.log('worked effect');
     dispatch(getTrendingUsersNFTsAsync());
   }, []);
   return (

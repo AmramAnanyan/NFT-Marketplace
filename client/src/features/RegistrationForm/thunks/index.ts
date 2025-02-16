@@ -7,6 +7,7 @@ export const userRegistrationAsync = createAsyncThunk(
     try {
       return await fetchUserRegistration(form);
     } catch (error: any) {
+      rejectWithValue(error);
       throw new Error('Could not register');
     }
   }

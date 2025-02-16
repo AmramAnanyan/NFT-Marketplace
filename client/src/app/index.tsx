@@ -78,8 +78,6 @@ export const counterSlice = createSlice({
       state.posts.push(action.payload);
     });
     builder.addCase(fetchPosts.rejected, (state, action) => {
-      console.log(current(state), 'state ===>>');
-      console.log(action, 'action');
       state.error = action.error;
     });
   }
