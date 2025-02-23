@@ -1,13 +1,8 @@
 import { Request, Response } from 'express';
 import UserService from '../services/UserService';
 import { Result, ValidationError, validationResult } from 'express-validator';
-import UserModel from '../models/User';
 import { Document } from 'mongoose';
-import bcrypt from 'bcrypt';
 import HttpError from '../errors/HttpError';
-interface IUser extends Document {
-  _doc?: any;
-}
 
 class UserController {
   userService: UserService;
@@ -53,6 +48,7 @@ class UserController {
         .json({ success: false, message: 'Wrong Email or Password' });
     }
   };
+  getUser = async () => {};
 }
 
 export default new UserController();
