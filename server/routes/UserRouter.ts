@@ -26,10 +26,10 @@ class UserRouter {
     this.router.get('/user', UserController.getUser);
   }
   public routers() {
-    this.checkAuthentication();
-    this.getUser();
     this.signUp();
     this.signIn();
+    this.checkAuthentication();
+    this.getUser();
     return this.router;
   }
 }
