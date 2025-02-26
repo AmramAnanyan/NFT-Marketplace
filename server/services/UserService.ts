@@ -97,5 +97,9 @@ class UserService {
       throw new Error('User is not found');
     }
   }
+  async getUserFromDB(id: Types.ObjectId | string) {
+    const user = await UserModel.findById({ _id: id }, '-password');
+    return user;
+  }
 }
 export default UserService;

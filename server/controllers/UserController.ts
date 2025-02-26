@@ -48,7 +48,11 @@ class UserController {
         .json({ success: false, message: 'Wrong Email or Password' });
     }
   };
-  getUser = async () => {};
+  getUser = async (req: Request, res: Response) => {
+    //@ts-ignore
+    const user = await this.userService.getUserFromDB(req.userData.userId);
+    res.json(user);
+  };
 }
 
 export default new UserController();
