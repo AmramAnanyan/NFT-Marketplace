@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchTrendingUserNFTs } from 'shared/api/nftsApi';
+import { fetchTopCreators } from 'shared/api/userApi';
 // it also should ba receive trending status
 export const getTrendingUsersNFTsAsync = createAsyncThunk(
   'trendingUserNfts/fetchByCreatorId',
@@ -9,6 +10,17 @@ export const getTrendingUsersNFTsAsync = createAsyncThunk(
       return await fetchTrendingUserNFTs();
     } catch (error) {
       throw new Error('Cannot fetch');
+    }
+  }
+);
+
+export const getTopCreatorsAsync = createAsyncThunk(
+  'topCreators/fetchTopCreators',
+  async (_, { rejectWithValue }) => {
+    try {
+      return await fetchTopCreators();
+    } catch (err: any) {
+      rejectWithValue(err);
     }
   }
 );

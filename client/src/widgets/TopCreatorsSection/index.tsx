@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { FC } from 'react';
 import UserCart from 'shared/ui/UserCart';
 import styles from './index.module.scss';
-import LoyautForSection from 'shared/ui/LoyautForSection';
+import LayoutForSection from 'shared/ui/LoyautForSection';
+import { IUser } from 'shared/types';
 
-const TopCreatorsSection = () => {
+const TopCreatorsSection: FC<{ creators: IUser[] }> = ({ creators }) => {
   return (
     <section>
-      <LoyautForSection
+      <LayoutForSection
         title='Trending Creators'
         description='Checkout Our Trending Creators'
       >
-        <UserCart />
-        <UserCart />
-        <UserCart />
-        <UserCart />
-        <UserCart />
-        <UserCart />
-      </LoyautForSection>
+        {creators.map((creator) => {
+          return <UserCart user={creator} />;
+        })}
+      </LayoutForSection>
     </section>
   );
 };

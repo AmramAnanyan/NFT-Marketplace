@@ -25,9 +25,13 @@ class UserRouter {
   private getUser() {
     this.router.get('/user', UserController.getUser);
   }
+  private getTopCreators() {
+    this.router.get('/top-creators', UserController.getTopCreators);
+  }
   public routers() {
     this.signUp();
     this.signIn();
+    this.getTopCreators();
     this.checkAuthentication();
     this.getUser();
     return this.router;

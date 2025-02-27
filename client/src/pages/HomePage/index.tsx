@@ -7,10 +7,16 @@ import DiscoverMoreNftSection from 'widgets/DiscoverMoreNftsSection';
 import { IUser } from 'shared/types';
 import PublicAuction from 'entities/Home/ui/PublicAuction';
 import { useEffect } from 'react';
-import { getTrendingUsersNFTsAsync } from 'features/Home/thunks';
+import {
+  getTopCreatorsAsync,
+  getTrendingUsersNFTsAsync
+} from 'features/Home/thunks';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useAppSelector } from 'shared/hooks/useAppSelector';
-import { selectTrendingUserNfts } from 'entities/Home/model/trendUserNft';
+import {
+  selectTopCreators,
+  selectTrendingUserNfts
+} from 'entities/Home/model/trendUserNft';
 interface INftCart {
   id: string;
   nftName: string;
@@ -24,27 +30,16 @@ interface INftCart {
 const HomePage = () => {
   const dispatch = useAppDispatch();
   const trendingUserNfts = useAppSelector(selectTrendingUserNfts);
-  const nftCartData: INftCart = {
-    id: '1',
-    nftName: 'Shunik',
-    nftImage:
-      'https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/image-placeholder-52@2x.png',
-    nftCreatorName: 'Valod',
-    nftCreatorImage:
-      'https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-89@2x.png',
-    highestBid: 0.35,
-    price: 1.35,
-    cryptoValet: 'ETH'
-  };
-
+  const topCreators = useAppSelector(selectTopCreators);
   useEffect(() => {
     dispatch(getTrendingUsersNFTsAsync());
+    dispatch(getTopCreatorsAsync());
   }, []);
   return (
     <main className={styles.container}>
       <HeroSection />
       <CollectionSection />
-      <TopCreatorsSection />
+      <TopCreatorsSection creators={topCreators} />
       <BrowseCategory />
       <DiscoverMoreNftSection data={trendingUserNfts} />
       <PublicAuction />

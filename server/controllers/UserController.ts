@@ -51,7 +51,11 @@ class UserController {
   getUser = async (req: Request, res: Response) => {
     //@ts-ignore
     const user = await this.userService.getUserFromDB(req.userData.userId);
-    res.json(user);
+    return res.json(user);
+  };
+  getTopCreators = async (req: Request, res: Response) => {
+    const topCreators = await this.userService.getUsersByRatingFromDB(0, 10);
+    return res.json(topCreators);
   };
 }
 

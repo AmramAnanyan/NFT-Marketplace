@@ -101,5 +101,11 @@ class UserService {
     const user = await UserModel.findById({ _id: id }, '-password');
     return user;
   }
+  async getUsersByRatingFromDB(minRating: number, maxRating: number) {
+    const creators = await UserModel.find({
+      ratingIndex: { $gt: minRating, $lt: maxRating }
+    });
+    return creators;
+  }
 }
 export default UserService;
