@@ -3,6 +3,7 @@ import { HomeRouter, User } from './routes';
 import mongoose from 'mongoose';
 import { API_BASE_VERSION, DATABASE_URL, PORT } from './config/envVariables';
 import path from 'path';
+import checkAgent from './middelwares/chech-agent';
 mongoose
   .connect(`${DATABASE_URL}`)
   .then(() => {
@@ -14,6 +15,7 @@ mongoose
 class App {
   #app: Application = express();
   #globalMiddleWares() {
+    // this.#app.use(checkAgent);
     this.#app.use((req, res, next) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader(

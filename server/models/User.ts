@@ -1,9 +1,14 @@
 import mongoose from 'mongoose';
+import { UserRole } from '../utils/roles';
 export interface IUser {
   email: string;
   name?: string;
   password: string;
   avatarUrl?: string;
+  totalSales?: number;
+  currency?: string;
+  role: UserRole;
+  isActive: boolean;
 }
 const UserSchema = new mongoose.Schema<IUser>(
   {
@@ -17,6 +22,8 @@ const UserSchema = new mongoose.Schema<IUser>(
       type: String,
       required: true
     },
+    role: { type: String, required: true, default: UserRole.USER },
+    isActive: { type: Boolean, required: true, default: true },
     avatarUrl: String
   },
   { timestamps: true }
