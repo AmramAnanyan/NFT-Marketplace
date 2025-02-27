@@ -1,6 +1,6 @@
 import BaseApi from './baseApi';
 
-const http = new BaseApi('');
 export const fetchUserData = () => {
+  const http = new BaseApi('');
   return http.get('/user');
 };

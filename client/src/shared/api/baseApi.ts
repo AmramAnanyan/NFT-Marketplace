@@ -12,6 +12,10 @@ class BaseApi {
   }
 
   private initHeaders() {
+    this.headers.append(
+      'Authorization',
+      `Bearer ${localStorage.getItem('privateToken')}`
+    );
     if (!this.isForm) {
       this.headers.append('Content-Type', 'application/json');
     }
