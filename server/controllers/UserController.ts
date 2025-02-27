@@ -3,6 +3,7 @@ import UserService from '../services/UserService';
 import { Result, ValidationError, validationResult } from 'express-validator';
 import { Document } from 'mongoose';
 import HttpError from '../errors/HttpError';
+import { HttpMessages, HttpStatus } from '../utils/http-status';
 
 class UserController {
   userService: UserService;
@@ -54,8 +55,16 @@ class UserController {
     return res.json(user);
   };
   getTopCreators = async (req: Request, res: Response) => {
-    const topCreators = await this.userService.getUsersByRatingFromDB(0, 10);
-    return res.json(topCreators);
+    try {
+      const topCreators = await this.userService.getUsersByRatingFromDB(0, 10);
+      return res.json(topCreators);
+    } catch (err) {
+      const error = new HttpError(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        HttpMessages[HttpStatus.INTERNAL_SERVER_ERROR]
+      );
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error);
+    }
   };
 }
 
