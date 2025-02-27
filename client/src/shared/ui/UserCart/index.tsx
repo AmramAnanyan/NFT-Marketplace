@@ -1,40 +1,32 @@
+import { FC } from 'react';
 import UserOnlineStatus from '../UserOnlineStatus';
 import styles from './index.module.scss';
 import { IUser } from 'shared/types';
 interface IUserCart {
-  id: IUser['id'];
-  index?: number;
-  name: IUser['name'];
-  image: IUser['image'];
-  totalSales: IUser['totalSales'];
-  active?: boolean;
+  user?: IUser;
   className?: string;
 }
-const userData: IUserCart = {
-  id: '1',
-  index: 1,
-  name: 'Hamo',
-  image:
-    'https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-89@2x.png',
-  totalSales: '35.45 ETH',
-  active: true
-};
-const UserCart = ({ className }: { className?: IUserCart['className'] }) => {
+
+const UserCart: FC<IUserCart> = ({ className, user }) => {
+  if (!user) {
+    return <div>Loader</div>;
+  }
   return (
     <div className={`${styles.conteiner} ${className || ''}`}>
-      <span className={styles.rank}>{userData.index}</span>
-      {userData.active && (
-        <UserOnlineStatus classN={styles.pulse} online={false} />
+      <span className={styles.rank}>{user.ratingIndex}</span>
+      {user.isActive && (
+        <UserOnlineStatus classN={styles.pulse} online={user.isActive} />
       )}
       <div
         className={styles.avatar}
-        style={{ backgroundImage: `url(${userData.image})` }}
+        style={{ backgroundImage: `url(${user.avatarUrl})` }}
       ></div>
-
-      <h5>{userData.name}</h5>
-
+      <h5>{user.name}</h5>
       <p>
-        Total Sales: <span>{userData.totalSales}</span>
+        Total Sales:{'  '}
+        <span>
+          {user.totalSales} {user.currency}
+        </span>
       </p>
     </div>
   );

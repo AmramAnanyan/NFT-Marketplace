@@ -33,6 +33,6 @@ export const userSlice = createSlice({
   }
 });
 
-export const selectUserData = (state: any) => state.user;
+export const selectUserData = (state: any) => state.user.user;
 
 export default userSlice.reducer;

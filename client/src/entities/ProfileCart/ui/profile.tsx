@@ -5,10 +5,10 @@ import { selectUserData } from 'entities/User/model';
 
 const Profile = () => {
   const user = useAppSelector(selectUserData);
-  console.log(user, 'user ====>>');
+
   return (
     <aside className={styles.cart_wrapper}>
-      <UserCart className={styles.cart_styles} />
+      <UserCart className={styles.cart_styles} user={user} />
     </aside>
   );
 };

@@ -9,6 +9,8 @@ export interface IUser {
   currency?: string;
   role: UserRole;
   isActive: boolean;
+  ratingIndex: number;
+  lastLoginAt?: Date;
 }
 const UserSchema = new mongoose.Schema<IUser>(
   {
@@ -24,6 +26,8 @@ const UserSchema = new mongoose.Schema<IUser>(
     },
     role: { type: String, required: true, default: UserRole.USER },
     isActive: { type: Boolean, required: true, default: true },
+    ratingIndex: { type: Number, required: true, default: 1 },
+    lastLoginAt: { type: Date },
     avatarUrl: String
   },
   { timestamps: true }

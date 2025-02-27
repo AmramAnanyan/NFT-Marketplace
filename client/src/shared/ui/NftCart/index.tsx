@@ -7,7 +7,7 @@ interface INftCart {
   nftName: string;
   image: string;
   nftCreatorName: IUser['name'];
-  nftCreatorImage: IUser['image'];
+  nftCreatorImage: IUser['avatarUrl'];
   highestBid: number;
   price: number;
   cryptoValet: string;

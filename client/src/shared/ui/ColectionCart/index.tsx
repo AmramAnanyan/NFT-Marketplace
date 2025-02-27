@@ -1,16 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { IUser } from 'shared/types'
-import styles from './index.module.scss'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { IUser } from 'shared/types';
+import styles from './index.module.scss';
 interface IColection {
-  id: string
-  colectionName: string
-  colectionImages: Array<any>
-  userName: IUser['name']
-  userImage: IUser['image']
+  id: string;
+  colectionName: string;
+  colectionImages: Array<any>;
+  userName: IUser['name'];
+  userImage: IUser['avatarUrl'];
 }
 const url =
-  'https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/primary-photo-placeholder-3@2x.png'
+  'https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/primary-photo-placeholder-3@2x.png';
 const ColectionCart = ({
   id,
   colectionName,
@@ -32,7 +32,7 @@ const ColectionCart = ({
               >
                 <span></span>
               </div>
-            )
+            );
           }
         })}
       </div>
@@ -44,7 +44,7 @@ const ColectionCart = ({
         <Link to=''>{userName}</Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ColectionCart
+export default ColectionCart;

@@ -1,12 +1,15 @@
-import React from 'react'
-import UserCart from 'shared/ui/UserCart'
-import styles from './index.module.scss'
-import LoyautForSection from 'shared/ui/LoyautForSection'
+import React from 'react';
+import UserCart from 'shared/ui/UserCart';
+import styles from './index.module.scss';
+import LoyautForSection from 'shared/ui/LoyautForSection';
 
 const TopCreatorsSection = () => {
   return (
     <section>
-      <LoyautForSection>
+      <LoyautForSection
+        title='Trending Creators'
+        description='Checkout Our Trending Creators'
+      >
         <UserCart />
         <UserCart />
         <UserCart />
@@ -15,7 +18,7 @@ const TopCreatorsSection = () => {
         <UserCart />
       </LoyautForSection>
     </section>
-  )
-}
+  );
+};
 
-export default TopCreatorsSection
+export default TopCreatorsSection;
