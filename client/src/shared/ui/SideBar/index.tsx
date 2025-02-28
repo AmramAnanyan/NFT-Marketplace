@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import styles from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChartBar,
+  faGear,
+  faHome,
+  faSignOutAlt,
+  faWallet
+} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import GradientBorder from '../GradientHoverBorder';
 
 const SideBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -13,25 +21,43 @@ const SideBar = () => {
     <nav>
       <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
         <div className={styles.sidebar_content}>
-          <h2>
-            <FontAwesomeIcon icon={faGear} color='#a259ff' /> Settings
-          </h2>
           <ul>
             <li>
-              <a href='#'>Home</a>
+              <GradientBorder>
+                {' '}
+                <FontAwesomeIcon icon={faHome} color='#108ee9' size='lg' />{' '}
+                <Link to={''}>Dashboard</Link>
+              </GradientBorder>
             </li>
             <li>
-              <a href='#'>About</a>
+              <GradientBorder>
+                <FontAwesomeIcon icon={faGear} color='#108ee9' size='lg' />
+                {'  '}
+                <Link to={''}>Settings</Link>
+              </GradientBorder>
             </li>
             <li>
-              <a href='#'>Services</a>
+              <GradientBorder>
+                <FontAwesomeIcon icon={faWallet} color='#108ee9' size='lg' />
+                {'  '}
+                <Link to={''}>Wallets</Link>
+              </GradientBorder>
             </li>
             <li>
-              <a href='#'>Contact</a>
+              <GradientBorder>
+                <FontAwesomeIcon icon={faChartBar} color='#108ee9' size='lg' />
+                {'  '}
+                <Link to={''}>Analytics</Link>
+              </GradientBorder>
+            </li>
+            <li>
+              <GradientBorder>
+                <FontAwesomeIcon icon={faSignOutAlt} color='#108ee9' />{' '}
+                <Link to={'/sign-in'}>Log Out</Link>
+              </GradientBorder>
             </li>
           </ul>
         </div>
-
         <div className={styles.sidebar_button} onClick={toggleSidebar}>
           <div
             className={`${styles.triangle} ${isSidebarOpen ? styles.open : ''}`}

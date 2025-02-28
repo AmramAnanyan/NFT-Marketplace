@@ -9,7 +9,6 @@ class UserRouter {
     this.router = Router();
   }
   private checkAuthentication() {
-    console.log('Worked checkAuthentication in router');
     this.router.use(checkAuth);
   }
   private signUp() {

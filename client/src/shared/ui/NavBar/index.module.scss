@@ -42,12 +42,14 @@
     align-items: center;
     .userLogo {
       padding-left: 12px;
+      color: var(--color-purple);
+      font-size: 18px;
     }
   }
   a {
     text-decoration: none;
-    color: #fff;
-    font-size: medium;
+    color: var(--color-purple);
+    font-size: 18px;
     font-weight: bold;
     font-family: var(--font);
   }

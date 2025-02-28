@@ -5,6 +5,9 @@ import { INavBar } from 'shared/types';
 import useWindowSize from 'shared/hooks/useWindowSize';
 import { useState } from 'react';
 import { useAuth } from 'shared/hooks/useAuth';
+import GradientBorder from '../GradientHoverBorder';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = ({ brand, navigations }: INavBar) => {
   const { isAuthenticated } = useAuth();
@@ -38,19 +41,27 @@ const NavBar = ({ brand, navigations }: INavBar) => {
           if (isAuthenticated && path === '/sign-in') {
             return (
               <li key={id}>
-                <NavLink to='/profile'>Profile</NavLink>
-                {path === '/sign-in' && (
-                  <img src={userLogo} alt='' className={styles.userLogo} />
-                )}
+                <GradientBorder>
+                  <NavLink to='/profile'>Profile</NavLink>
+                  {path === '/sign-in' && (
+                    <FontAwesomeIcon
+                      icon={faUser}
+                      color='#2596ff'
+                      className={styles.userLogo}
+                    />
+                  )}
+                </GradientBorder>
               </li>
             );
           }
           return (
             <li key={id}>
-              <NavLink to={path}>{title}</NavLink>
-              {path === '/sign-in' && (
-                <img src={userLogo} alt='' className={styles.userLogo} />
-              )}
+              <GradientBorder>
+                <NavLink to={path}>{title}</NavLink>
+                {path === '/sign-in' && (
+                  <FontAwesomeIcon icon={faUser} color='#2596ff' />
+                )}
+              </GradientBorder>
             </li>
           );
         })}

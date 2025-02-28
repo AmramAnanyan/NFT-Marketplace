@@ -71,11 +71,9 @@
 .description_animate {
   background: linear-gradient(
     90deg,
-    #a259ff,
-    #ff9aff,
-    #ff6b6b,
-    #feca57,
-    #1dd1a1
+    var(--color-purple),
+    var(--dark-purple),
+    var(--cool-blue)
   );
   background-size: 300% 300%;
   -webkit-background-clip: text;
@@ -111,11 +109,9 @@
 .without_wave {
   background: linear-gradient(
     90deg,
-    #a259ff,
-    #ff9aff,
-    #ff6b6b,
-    #feca57,
-    #1dd1a1
+    var(--color-purple),
+    var(--dark-purple),
+    var(--cool-blue)
   );
   background-size: 300% 300%;
   -webkit-background-clip: text;
@@ -142,11 +138,9 @@
   font-weight: bold;
   background: linear-gradient(
     90deg,
-    #a259ff,
-    #ff9aff,
-    #ff6b6b,
-    #feca57,
-    #1dd1a1
+    var(--color-purple),
+    var(--dark-purple),
+    var(--cool-blue)
   );
   background-size: 300% 300%;
   -webkit-background-clip: text;
