@@ -3,13 +3,15 @@ import { counterSlice } from 'app';
 import homeSlice from 'entities/Home/model/trendUserNft';
 import auth from 'entities/Registration/model';
 import user from 'entities/User/model';
+import marketPlaceSlice from 'entities/MarketPlace/model';
 
 export const store = configureStore({
   reducer: {
     counter: counterSlice.reducer,
     homeData: homeSlice,
     auth: auth,
-    user: user
+    user: user,
+    marketPlace: marketPlaceSlice
   }
 });
 

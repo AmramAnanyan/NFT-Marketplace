@@ -4,22 +4,31 @@ interface ILoyautForSection {
   title?: string;
   description?: string;
   children: React.ReactNode;
+  isHeader?: boolean;
 }
-const LayoutForSection = ({
+
+const HeaderForLayout = ({
   title,
-  description,
-  children
-}: ILoyautForSection) => {
+  description
+}: {
+  title?: string;
+  description?: string;
+}) => {
+  return (
+    <div className={styles.headingWrraper}>
+      <h2>{title ? title : 'Trending Collection'}</h2>
+      <h4>
+        {description
+          ? description
+          : 'Checkout Our Weekly Updated Trending Collection.'}
+      </h4>
+    </div>
+  );
+};
+const LayoutForSection = ({ children, isHeader = true }: ILoyautForSection) => {
   return (
     <section className={styles.conteiner}>
-      <div className={styles.headingWrraper}>
-        <h2>{title ? title : 'Trending Collection'}</h2>
-        <h4>
-          {description
-            ? description
-            : 'Checkout Our Weekly Updated Trending Collection.'}
-        </h4>
-      </div>
+      {isHeader && <HeaderForLayout />}
       <div className={styles.colectionSection}>{children}</div>
     </section>
   );

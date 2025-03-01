@@ -57,3 +57,21 @@ export interface IColection {
   id: string;
   name: string;
 }
+
+export interface ICollection {
+  title: string;
+  description: string;
+  creator: IUser;
+  nfts: INFT;
+  collectionImage?: string;
+}
+export interface INFT {
+  title: string;
+  description: string;
+  image: string;
+  price: number;
+  creator: IUser;
+  nftCollection?: ICollection;
+  createdAt?: Date;
+  updatedAt?: Date;
+}

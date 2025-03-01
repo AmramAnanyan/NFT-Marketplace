@@ -11,7 +11,8 @@ class MarketPlaceController {
   }
   getAllNfts = async (req: Request, res: Response) => {
     try {
-      return await this.nftsService.getAllNftsFromDB();
+      const nfts = await this.nftsService.getAllNftsFromDB();
+      return res.json(nfts);
     } catch (error: unknown) {
       if (error instanceof DatabaseError) {
         const error = new HttpError(

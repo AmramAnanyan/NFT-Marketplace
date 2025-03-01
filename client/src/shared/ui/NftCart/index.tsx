@@ -51,9 +51,10 @@ const NftCart = ({
           <div
             className={styles.nftCreatorImage}
             style={{
-              backgroundImage: `url(${
-                BASE_DEVELOPMENT_URL + creator?.avatarUrl
-              })`
+              // backgroundImage: `url(${
+              //   BASE_DEVELOPMENT_URL + creator?.avatarUrl
+              // })`
+              backgroundImage: `url(${creator?.avatarUrl})`
             }}
           ></div>
           <p>{creator?.name}</p>
