@@ -1,6 +1,8 @@
 import { FC, useState } from 'react';
 import styles from './index.module.scss';
-interface IProductFilter {
+import { SELECTED_TAB } from 'shared/constants/productBar';
+
+export interface IProductFilter {
   id: number;
   selector: string;
 }
@@ -9,7 +11,10 @@ interface IProductFilterBar {
   onClick(arg: IProductFilter): void;
 }
 const ProductFilterBar: FC<IProductFilterBar> = ({ filters, onClick }) => {
-  const [selected, setSelected] = useState({ isSelected: false, id: null });
+  const [selected, setSelected] = useState({
+    isSelected: false,
+    id: SELECTED_TAB.ONE
+  });
   const handleSelect = (item: any) => {
     onClick(item);
     setSelected({ id: item.id, isSelected: !selected.isSelected });

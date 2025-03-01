@@ -21,7 +21,9 @@ const NavBar = ({ brand, navigations }: INavBar) => {
   return (
     <nav className={`${styles.conteiner_navbar}`}>
       <div className={styles.logo}>
-        <NavLink to={''}>{brand.title}</NavLink>
+        <GradientBorder>
+          <NavLink to={''}>{brand.title}</NavLink>
+        </GradientBorder>
       </div>
       {mobileTab && (
         <div

@@ -147,7 +147,8 @@
   -webkit-text-fill-color: transparent;
   display: inline-block;
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3), 8px 8px 5px rgba(0, 0, 0, 0.2);
-  animation: gradientMove 3s infinite linear, waveText 2s infinite ease-in-out;
+  // animation: gradientMove 3s infinite linear, waveText 2s infinite ease-in-out;
+  animation: gradientMove 3s infinite linear;
   transform-style: preserve-3d;
 
   @keyframes gradientMove {

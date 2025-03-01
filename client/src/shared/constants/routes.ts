@@ -25,5 +25,11 @@ export const HARD_CODE_ROUTES: Array<RouteType> = [
     props: null,
     component: lazy(() => import('pages/UserPage')),
     isPrivate: true
+  },
+  {
+    path: '/marketplace',
+    props: null,
+    component: lazy(() => import('pages/MarketPlace')),
+    isPrivate: false
   }
 ];
