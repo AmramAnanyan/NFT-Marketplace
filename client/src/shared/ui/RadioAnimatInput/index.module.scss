@@ -1,0 +1,102 @@
+// RangeInput.module.scss
+@keyframes subtlePulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.container {
+  position: relative;
+  width: 300px;
+  margin: 2rem auto;
+  padding: 20px 0;
+}
+
+.inputRange {
+  width: 100%;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  outline: none;
+  -webkit-appearance: none;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #8b5cf6;
+    border-radius: 50%;
+    border: 2px solid #1a1a1a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #8b5cf6;
+    border-radius: 50%;
+    border: 2px solid #1a1a1a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      #8b5cf6 0%,
+      #8b5cf6 var(--progress),
+      #333 var(--progress),
+      #333 100%
+    );
+    border-radius: 2px;
+  }
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  color: #ffffff99;
+  font-size: 0.9rem;
+}
+
+.valueDisplay {
+  position: absolute;
+  top: -10px;
+  transform: translateX(-50%);
+  background: #8b5cf6;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px 4px 0 4px;
+    border-style: solid;
+    border-color: #8b5cf6 transparent transparent transparent;
+  }
+}

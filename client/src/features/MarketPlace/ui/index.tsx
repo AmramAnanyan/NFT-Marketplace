@@ -11,11 +11,14 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { getAllNftsAsync } from '../thunks';
 import styles from './index.module.scss';
 import SearchInput from 'shared/ui/SearchInput';
+import RangeInput from 'shared/ui/RadioAnimatInput';
+import RadioInput from 'shared/ui/RadioInput';
 
 const MarketPlaceFeatures = () => {
   const [selectedTab, setSelectedTab] = useState(SELECTED_TAB.ONE);
   const nfts = useAppSelector(setAllNfts);
   const dispatch = useAppDispatch();
+  const [selectedRadioValue, setSelectedRadioValue] = useState('');
   const handleSelect = (item: IProductFilter) => {
     setSelectedTab(item.id);
   };
@@ -27,7 +30,23 @@ const MarketPlaceFeatures = () => {
   console.log(nfts, 'nfts');
   return (
     <section className={styles.section}>
-      <SearchInput />
+      <div className={styles.settings}>
+        <SearchInput className={styles.settings_search} />
+        <RangeInput />
+        <RadioInput
+          name='theme'
+          selectedValue={selectedRadioValue}
+          onChange={(value) => {
+            setSelectedRadioValue(value);
+          }}
+          options={[
+            { value: 'dark', label: 'Dark Mode' },
+            { value: 'light', label: 'Light Mode' },
+            { value: 'system', label: 'System Default' }
+          ]}
+        />
+      </div>
+
       <ProductFilterBar
         filters={MARKETPLACE_PAGE_PRODUCTS}
         onClick={handleSelect}

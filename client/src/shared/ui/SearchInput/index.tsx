@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
 
-const SearchInput = () => {
+const SearchInput = ({ className }: { className?: string }) => {
   const [value, setValue] = useState('');
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${className || ''}`}>
       <input
         type='text'
         value={value}
