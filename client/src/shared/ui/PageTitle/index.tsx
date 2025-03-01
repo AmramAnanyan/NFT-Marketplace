@@ -1,5 +1,6 @@
+import PrettyLine from '../PrettyLine';
 import styles from './index.module.scss';
-
+// '', '#ff9aff', '#6722d6', '#a259ff';
 const PageTitle = ({
   title,
   subTitle
@@ -21,6 +22,7 @@ const PageTitle = ({
           {subTitle}
         </h2>
       )}
+      <PrettyLine />
     </div>
   );
 };
