@@ -1,9 +1,15 @@
-import express, { Request, Response, Application } from 'express';
-import { HomeRouter, User } from './routes';
+import express, {
+  Request,
+  Response,
+  Application,
+  ErrorRequestHandler
+} from 'express';
+import { HomeRouter, MarketPlaceRouter, User } from './routes';
 import mongoose from 'mongoose';
 import { API_BASE_VERSION, DATABASE_URL, PORT } from './config/envVariables';
 import path from 'path';
 import checkAgent from './middelwares/chech-agent';
+import { HttpMessages, HttpStatus } from './utils/http-status';
 mongoose
   .connect(`${DATABASE_URL}`)
   .then(() => {
@@ -35,8 +41,11 @@ class App {
   #routerMiddleWares() {
     this.#app.use(API_BASE_VERSION, HomeRouter.routers());
     this.#app.use(API_BASE_VERSION, User.routers());
-    this.#app.get(API_BASE_VERSION, (req: Request, res: Response) => {
-      res.send('this is worked with class');
+    this.#app.use(API_BASE_VERSION, MarketPlaceRouter.routers());
+    this.#app.use((req: Request, res: Response) => {
+      return res
+        .status(HttpStatus.NOT_FOUND)
+        .send(HttpMessages[HttpStatus.NOT_FOUND]);
     });
   }
   #runServer() {

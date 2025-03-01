@@ -14,5 +14,19 @@ class NFTService {
       throw new DatabaseError(error.message);
     }
   }
+  async getAllNftsFromDB() {
+    try {
+      return await NFTModel.find().populate('creator');
+    } catch (error: any) {
+      throw new DatabaseError(error.message);
+    }
+  }
+  async getNftByIdFromDB(id: string | Types.ObjectId) {
+    try {
+      return await NFTModel.findById({ _id: id });
+    } catch (error: any) {
+      throw new DatabaseError(error.message);
+    }
+  }
 }
 export default NFTService;
