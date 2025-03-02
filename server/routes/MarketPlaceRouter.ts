@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import MarketPlaceController from '../controllers/MarketPlaceController';
+import * as Validation from '../middelwares/searh-validation';
 
 class MarketPlaceRoute {
   router: Router;
@@ -13,9 +14,17 @@ class MarketPlaceRoute {
   nftByIdRoute() {
     this.router.get('/nft/:id', MarketPlaceController.getNftById);
   }
+  searchNftByTitle() {
+    this.router.post(
+      '/all-nfts',
+      Validation.searchValidation,
+      MarketPlaceController.searchNftByTitle
+    );
+  }
   routers() {
     this.nftsRoute();
     this.nftByIdRoute();
+    this.searchNftByTitle();
     return this.router;
   }
 }

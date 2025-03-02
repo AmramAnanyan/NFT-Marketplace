@@ -1,3 +1,4 @@
+import { validationResult } from 'express-validator';
 import DatabaseError from '../errors/DatabaseError';
 import HttpError from '../errors/HttpError';
 import NFTService from '../services/NFTService';
@@ -38,6 +39,32 @@ class MarketPlaceController {
           HttpMessages[HttpStatus.BAD_GATEWAY]
         );
         return res.status(HttpStatus.BAD_REQUEST).json(error);
+      }
+    }
+  };
+  searchNftByTitle = async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res
+        .status(HttpStatus.BAD_REQUEST)
+        .json({ status: HttpStatus.BAD_REQUEST, messages: errors });
+    }
+    try {
+      const searchTerm = req.body.searchTerm;
+      const searchResult = await this.nftsService.searchNftsBySearchTermFromDB(
+        searchTerm
+      );
+      if (!searchResult || !searchResult.length) {
+        return res.status(HttpStatus.NO_CONTENT).end();
+      }
+      return res.json(searchResult);
+    } catch (err: unknown) {
+      if (err instanceof DatabaseError) {
+        const error = new HttpError(
+          HttpStatus.INTERNAL_SERVER_ERROR,
+          HttpMessages[HttpStatus.INTERNAL_SERVER_ERROR]
+        );
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error);
       }
     }
   };

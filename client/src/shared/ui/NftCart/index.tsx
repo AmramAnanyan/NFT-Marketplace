@@ -12,6 +12,7 @@ interface INftCart {
   price: number;
   cryptoValet: string;
   creator: any;
+  title: string;
 }
 
 // const nftCartData: INftCart = {
@@ -29,8 +30,7 @@ const NftCart = ({
   id,
   nftName,
   image,
-  nftCreatorName,
-  nftCreatorImage,
+  title,
   highestBid,
   price,
   cryptoValet,
@@ -69,7 +69,7 @@ const NftCart = ({
             </span>
           </p>
           <p>
-            <span>Highest Bid</span>
+            <span>{title}</span>
             <span>
               {highestBid}
               {cryptoValet}

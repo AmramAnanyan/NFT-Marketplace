@@ -28,5 +28,20 @@ class NFTService {
       throw new DatabaseError(error.message);
     }
   }
+  async searchNftsBySearchTermFromDB(searchTerm: string) {
+    try {
+      // eficient search with indexed titles and description
+      // const searchResult = await NFTModel.find({
+      //   $text: { $search: searchTerm }
+      // });
+      const regex = new RegExp(searchTerm, 'i');
+      const searchResult = await NFTModel.find({
+        $or: [{ title: regex }, { description: regex }]
+      });
+      return searchResult;
+    } catch (error: any) {
+      throw new DatabaseError(error.message);
+    }
+  }
 }
 export default NFTService;
