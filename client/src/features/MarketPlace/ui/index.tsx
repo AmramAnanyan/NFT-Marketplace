@@ -8,11 +8,12 @@ import Tabs from './Tabs';
 import { useAppSelector } from 'shared/hooks/useAppSelector';
 import { setAllNfts } from 'entities/MarketPlace/model';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { getAllNftsAsync } from '../thunks';
+import { getAllNftsAsync, getSearchedNftsAsync } from '../thunks';
 import styles from './index.module.scss';
 import SearchInput from 'shared/ui/SearchInput';
 import RangeInput from 'shared/ui/RadioAnimatInput';
 import RadioInput from 'shared/ui/RadioInput';
+import { toast } from 'shared/ui/Toast/utils';
 
 const MarketPlaceFeatures = () => {
   const [selectedTab, setSelectedTab] = useState(SELECTED_TAB.ONE);
@@ -27,11 +28,21 @@ const MarketPlaceFeatures = () => {
       dispatch(getAllNftsAsync());
     }
   }, [selectedTab]);
-  console.log(nfts, 'nfts');
+  const handleSearch = (searchQuery: string) => {
+    if (searchQuery.trim().length < 2) {
+      // toast().warning('Write search term please');
+      return;
+    } else {
+      dispatch(getSearchedNftsAsync(searchQuery));
+    }
+  };
   return (
     <section className={styles.section}>
       <div className={styles.settings}>
-        <SearchInput className={styles.settings_search} />
+        <SearchInput
+          className={styles.settings_search}
+          onSearch={handleSearch}
+        />
         <RangeInput />
         <RadioInput
           name='theme'

@@ -25,7 +25,6 @@ const RegistrationForm = () => {
   const handleRegistration = async () => {
     const data = await dispatch(userRegistrationAsync(formData)).unwrap();
     if (!data?.success) {
-      console.log('data ===>> erorr', data);
       toast().error(data.message);
     } else {
       setToken(data.token);

@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllNftsAsync } from 'features/MarketPlace/thunks';
+import {
+  getAllNftsAsync,
+  getSearchedNftsAsync
+} from 'features/MarketPlace/thunks';
 import { RequestStatusNames } from 'shared/constants/requestStatuses';
 const initialState = {
   nfts: { status: RequestStatusNames.IDLE, success: false, data: [] },
@@ -20,6 +23,19 @@ export const marketPlaceSlice = createSlice({
         state.nfts.data = action.payload;
       })
       .addCase(getAllNftsAsync.rejected, (state, action) => {
+        state.nfts.status = RequestStatusNames.REJECTED;
+        state.nfts.success = false;
+        state.nfts.data = action.payload as any;
+      })
+      .addCase(getSearchedNftsAsync.pending, (state, action) => {
+        state.nfts.status = RequestStatusNames.PENDING;
+      })
+      .addCase(getSearchedNftsAsync.fulfilled, (state, action) => {
+        state.nfts.status = RequestStatusNames.SUCCESS;
+        state.nfts.success = true;
+        state.nfts.data = action.payload;
+      })
+      .addCase(getSearchedNftsAsync.rejected, (state, action) => {
         state.nfts.status = RequestStatusNames.REJECTED;
         state.nfts.success = false;
         state.nfts.data = action.payload as any;
