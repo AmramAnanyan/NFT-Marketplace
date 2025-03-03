@@ -2,8 +2,7 @@
 
 ## Project Status
 
-🚧 Not Finished – Still in Development 🚧
-![Project Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
+![Project Status](https://img.shields.io/badge/Status-In%20Progress-yellow)🚧 Not Finished – Still in Development 🚧
 
 ## Overview
 
