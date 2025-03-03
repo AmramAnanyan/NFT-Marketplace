@@ -97,7 +97,7 @@ This project includes a CI/CD pipeline for automated testing and deployment. The
 
 ![3D Model](./readmeImages/3dModel.png)
 
-### 🔐 Authentication Page
+### 🔐 Profile page
 
 ![Profile page](./readmeImages/profile_page.png)
 
