@@ -5,6 +5,7 @@ export interface IDebounce {
 }
 const useDebounce = (): { debounce(arg: IDebounce): void } => {
   const timeOutId = useRef<any>(0);
+
   const debounce = useCallback(({ delay, callBack }: IDebounce) => {
     if (timeOutId.current) {
       clearTimeout(timeOutId.current);
@@ -13,6 +14,7 @@ const useDebounce = (): { debounce(arg: IDebounce): void } => {
       callBack();
     }, delay);
   }, []);
+
   useEffect(() => {
     return () => {
       clearTimeout(timeOutId.current);
