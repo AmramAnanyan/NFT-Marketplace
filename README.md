@@ -1,5 +1,10 @@
 # MERN Stack Project
 
+## Project Status
+
+🚧 Not Finished – Still in Development 🚧
+![Project Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
+
 ## Overview
 
 This is a full-stack MERN (MongoDB, Express.js, React, Node.js) project built with modern web technologies and best practices. The application leverages:
