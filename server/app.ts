@@ -1,24 +1,21 @@
-import express, {
-  Request,
-  Response,
-  Application,
-  ErrorRequestHandler
-} from 'express';
+import express, { Request, Response, Application } from 'express';
 import { HomeRouter, MarketPlaceRouter, User } from './routes';
 import mongoose from 'mongoose';
 import { API_BASE_VERSION, DATABASE_URL, PORT } from './config/envVariables';
 import path from 'path';
-import checkAgent from './middelwares/chech-agent';
 import { HttpMessages, HttpStatus } from './utils/http-status';
-mongoose
-  .connect(`${DATABASE_URL}`)
-  .then(() => {
-    console.log('DB conected');
-  })
-  .catch((err) => {
-    console.log(err, 'db error');
-  });
+
 class App {
+  static {
+    mongoose
+      .connect(`${DATABASE_URL}`)
+      .then(() => {
+        console.log('DB conected');
+      })
+      .catch((err) => {
+        console.log(err, 'db error');
+      });
+  }
   #app: Application = express();
   #globalMiddleWares() {
     // this.#app.use(checkAgent);

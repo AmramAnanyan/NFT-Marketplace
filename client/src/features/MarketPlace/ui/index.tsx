@@ -14,12 +14,14 @@ import SearchInput from 'shared/ui/SearchInput';
 import RangeInput from 'shared/ui/RadioAnimatInput';
 import RadioInput from 'shared/ui/RadioInput';
 import { toast } from 'shared/ui/Toast/utils';
+import useDebounce from 'shared/hooks/useDebounce';
 
 const MarketPlaceFeatures = () => {
   const [selectedTab, setSelectedTab] = useState(SELECTED_TAB.ONE);
   const nfts = useAppSelector(setAllNfts);
   const dispatch = useAppDispatch();
   const [selectedRadioValue, setSelectedRadioValue] = useState('');
+  const { debounce } = useDebounce();
   const handleSelect = (item: IProductFilter) => {
     setSelectedTab(item.id);
   };
@@ -33,7 +35,12 @@ const MarketPlaceFeatures = () => {
       // toast().warning('Write search term please');
       return;
     } else {
-      dispatch(getSearchedNftsAsync(searchQuery));
+      debounce({
+        delay: 1000,
+        callBack: () => {
+          dispatch(getSearchedNftsAsync(searchQuery));
+        }
+      });
     }
   };
   return (
