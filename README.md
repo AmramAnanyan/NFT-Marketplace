@@ -95,15 +95,15 @@ This project includes a CI/CD pipeline for automated testing and deployment. The
 
 ### 🎨 3D Model Display
 
-![3D Model](./readmeImages/homepage.gif)
+![3D Model](./readmeImages/3dModel.png)
 
 ### 🔐 Authentication Page
 
 ![Profile page](./readmeImages/profile_page.png)
 
-### 📊 Dashboard
+### 📊 Marketplace
 
-![Dashboard](https://via.placeholder.com/800x400)
+![Marketplace](./readmeImages//marketPlace.png)
 
 ## License
 
