@@ -95,11 +95,11 @@ This project includes a CI/CD pipeline for automated testing and deployment. The
 
 ### 🎨 3D Model Display
 
-![3D Model](./readmeImages/homepage.gif/800x400)
+![3D Model](./readmeImages/homepage.gif)
 
 ### 🔐 Authentication Page
 
-![Profile page](./readmeImages/profile_page.png/800x400)
+![Profile page](./readmeImages/profile_page.png)
 
 ### 📊 Dashboard
 
