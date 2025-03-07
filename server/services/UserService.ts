@@ -6,6 +6,7 @@ import { Request } from 'express';
 import { JWT_SECRET_KEY } from '../config/envVariables';
 import DatabaseError from '../errors/DatabaseError';
 import HttpError from '../errors/HttpError';
+import { HttpStatus } from '../utils/http-status';
 // all works with request object needed to move controller
 // in service should work only databases without request
 // In controller should work only request and response it is a for client to server work
@@ -67,7 +68,10 @@ class UserService {
     try {
       const user = await UserModel.findOne({ email });
       if (user) {
-        return new HttpError(422, 'User already exist');
+        return new HttpError(
+          HttpStatus.UNPROCESSABLE_ENTITY,
+          'User already exist'
+        );
       }
       return null;
     } catch (error) {
@@ -79,7 +83,10 @@ class UserService {
     try {
       const userData = await UserModel.findOne({ email });
       if (!userData) {
-        throw new HttpError(422, 'User is not found');
+        throw new HttpError(
+          HttpStatus.UNPROCESSABLE_ENTITY,
+          'User is not found'
+        );
       }
       //@ts-ignore
       const isValidPassword = await bcrypt.compare(password, userData.password);
@@ -97,7 +104,7 @@ class UserService {
       throw new Error('User is not found');
     }
   }
-  async getUserFromDB(id: Types.ObjectId | string) {
+  async getUserByIdFromDB(id: Types.ObjectId | string) {
     const user = await UserModel.findById({ _id: id }, '-password');
     return user;
   }
@@ -106,9 +113,16 @@ class UserService {
       {
         ratingIndex: { $gt: minRating, $lt: maxRating }
       },
-      '-password'
+      '-password -email'
     );
     return creators;
+  }
+  async getUserCountInDB(): Promise<number> {
+    try {
+      return await UserModel.countDocuments();
+    } catch (err: any) {
+      return 0;
+    }
   }
 }
 export default UserService;

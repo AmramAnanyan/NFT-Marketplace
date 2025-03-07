@@ -37,8 +37,8 @@ class App {
   }
   #routerMiddleWares() {
     this.#app.use(API_BASE_VERSION, HomeRouter.routers());
-    this.#app.use(API_BASE_VERSION, User.routers());
     this.#app.use(API_BASE_VERSION, MarketPlaceRouter.routers());
+    this.#app.use(API_BASE_VERSION, User.routers());
     this.#app.use((req: Request, res: Response) => {
       return res
         .status(HttpStatus.NOT_FOUND)

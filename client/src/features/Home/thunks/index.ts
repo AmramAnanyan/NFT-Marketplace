@@ -16,9 +16,12 @@ export const getTrendingUsersNFTsAsync = createAsyncThunk(
 
 export const getTopCreatorsAsync = createAsyncThunk(
   'topCreators/fetchTopCreators',
-  async (_, { rejectWithValue }) => {
+  async (
+    { startRanking, endRanking }: { startRanking: number; endRanking: number },
+    { rejectWithValue }
+  ) => {
     try {
-      return await fetchTopCreators();
+      return await fetchTopCreators(startRanking, endRanking);
     } catch (err: any) {
       rejectWithValue(err);
     }

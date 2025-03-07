@@ -5,7 +5,9 @@ export const fetchUserData = () => {
   return http.get('/user');
 };
 
-export const fetchTopCreators = () => {
+export const fetchTopCreators = (startRanking: number, endRanking: number) => {
   const http = new BaseApi('');
-  return http.get('/top-creators');
+  return http.get(
+    `/top-creators?startRanking=${startRanking}&endRanking=${endRanking}`
+  );
 };

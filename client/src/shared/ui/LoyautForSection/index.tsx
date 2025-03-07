@@ -25,10 +25,15 @@ const HeaderForLayout = ({
     </div>
   );
 };
-const LayoutForSection = ({ children, isHeader = true }: ILoyautForSection) => {
+const LayoutForSection = ({
+  children,
+  isHeader = true,
+  title,
+  description
+}: ILoyautForSection) => {
   return (
     <section className={styles.conteiner}>
-      {isHeader && <HeaderForLayout />}
+      {isHeader && <HeaderForLayout title={title} description={description} />}
       <div className={styles.colectionSection}>{children}</div>
     </section>
   );

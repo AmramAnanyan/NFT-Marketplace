@@ -51,19 +51,34 @@ class UserController {
   };
   getUser = async (req: Request, res: Response) => {
     //@ts-ignore
-    const user = await this.userService.getUserFromDB(req.userData.userId);
+    const user = await this.userService.getUserByIdFromDB(req.userData.userId);
     return res.json(user);
   };
   getTopCreators = async (req: Request, res: Response) => {
+    const query = req.query;
+    let startRanking = 0;
+    let endRanking = 0;
+    if (query && 'startRanking' in query && 'endRanking' in query) {
+      startRanking = Number(query.startRanking);
+      endRanking = Number(query.endRanking);
+    } else if (query && 'startRanking' in query && !('endRanking' in query)) {
+      endRanking = await this.userService.getUserCountInDB();
+    } else {
+      startRanking = 0;
+      endRanking = await this.userService.getUserCountInDB();
+    }
     try {
-      const topCreators = await this.userService.getUsersByRatingFromDB(0, 10);
+      const topCreators = await this.userService.getUsersByRatingFromDB(
+        startRanking,
+        endRanking
+      );
       return res.json(topCreators);
     } catch (err) {
       const error = new HttpError(
         HttpStatus.INTERNAL_SERVER_ERROR,
         HttpMessages[HttpStatus.INTERNAL_SERVER_ERROR]
       );
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error);
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error);
     }
   };
 }

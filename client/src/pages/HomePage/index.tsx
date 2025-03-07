@@ -33,7 +33,7 @@ const HomePage = () => {
   const topCreators = useAppSelector(selectTopCreators);
   useEffect(() => {
     dispatch(getTrendingUsersNFTsAsync());
-    dispatch(getTopCreatorsAsync());
+    dispatch(getTopCreatorsAsync({ startRanking: 0, endRanking: 10 }));
   }, []);
   return (
     <main className={styles.container}>
