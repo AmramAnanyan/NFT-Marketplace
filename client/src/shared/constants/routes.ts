@@ -6,7 +6,7 @@ export const HARD_CODE_ROUTES: Array<RouteType> = [
     path: '/ranking',
     props: null,
     component: lazy(() => import('pages/RankingPage')),
-    isPrivate: true
+    isPrivate: false
   },
   {
     path: '/sign-in',

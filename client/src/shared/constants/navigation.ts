@@ -6,13 +6,13 @@ export const HARD_CODE_NAVIGATION_BAR = [
     isLogin: false,
     path: '/marketplace'
   },
-  { id: 2, title: 'Ranking', active: false, isLogin: false, path: '/rancing' },
+  { id: 2, title: 'Ranking', active: false, isLogin: false, path: '/ranking' },
   {
     id: 3,
     title: 'Connect wallet',
     active: false,
     isLogin: false,
-    path: '/conect-wallet'
+    path: '/connect-wallet'
   },
   {
     id: 4,
