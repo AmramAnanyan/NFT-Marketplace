@@ -5,7 +5,6 @@ import { fetchTopCreators } from 'shared/api/userApi';
 export const getTrendingUsersNFTsAsync = createAsyncThunk(
   'trendingUserNfts/fetchByCreatorId',
   async (creatorId?: number | string) => {
-    console.log('worked this?');
     try {
       return await fetchTrendingUserNFTs();
     } catch (error) {

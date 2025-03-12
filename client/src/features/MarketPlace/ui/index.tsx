@@ -32,7 +32,7 @@ const MarketPlaceFeatures = () => {
   }, [selectedTab]);
   const handleSearch = (searchQuery: string) => {
     if (searchQuery.trim().length < 2) {
-      // toast().warning('Write search term please');
+      toast().warning('Write search term please');
       return;
     } else {
       debounce({

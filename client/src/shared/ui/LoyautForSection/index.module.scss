@@ -34,6 +34,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
   @media only screen and (max-width: 480px) {
     justify-content: center;
     display: flex;

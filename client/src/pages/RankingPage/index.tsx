@@ -1,3 +1,4 @@
+import RankingFeatures from 'features/Ranking/ui';
 import PageTitle from 'shared/ui/PageTitle';
 import PageWrapper from 'shared/ui/PageWrapper';
 import StarWaveBackground from 'shared/ui/StarWaveBackground';
@@ -11,6 +12,7 @@ const RankingPage = () => {
           subTitle='Discover and Explore Leading Creators'
         />
       </StarWaveBackground>
+      <RankingFeatures />
     </PageWrapper>
   );
 };
