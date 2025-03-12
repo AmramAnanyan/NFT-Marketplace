@@ -15,8 +15,8 @@ interface IDBUser extends Document {
 }
 
 class UserService {
-  createToken(id: string | Types.ObjectId, password: string, email: string) {
-    return jwt.sign({ id, password, email }, JWT_SECRET_KEY, {
+  createToken(id: string | Types.ObjectId, email: string) {
+    return jwt.sign({ id, email }, JWT_SECRET_KEY, {
       expiresIn: '7d'
     });
   }
@@ -29,8 +29,8 @@ class UserService {
       throw new Error('Not verifyied');
     }
   }
-  authorizeJWT(id: string | Types.ObjectId, email: string, password: string) {
-    return this.verifyToken(this.createToken(id, password, email));
+  authorizeJWT(id: string | Types.ObjectId, email: string) {
+    return this.verifyToken(this.createToken(id, email));
   }
 
   async dataHashing(str: string): Promise<string | Error> {
@@ -91,11 +91,7 @@ class UserService {
       //@ts-ignore
       const isValidPassword = await bcrypt.compare(password, userData.password);
       if (isValidPassword) {
-        const token = this.authorizeJWT(
-          userData._id,
-          userData.email,
-          userData.password
-        );
+        const token = this.authorizeJWT(userData._id, userData.email);
         return { success: true, token, userData };
       } else {
         throw new Error('User is not found');
