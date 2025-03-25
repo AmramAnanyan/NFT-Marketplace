@@ -14,7 +14,7 @@ const PublicAuction = () => {
   const creators: IUser[] = useAppSelector(selectTopCreators);
   const n1Creator = useMemo(
     () =>
-      creators.find((creator) => {
+      creators?.find((creator) => {
         return creator.ratingIndex === 1;
       }),
     [creators.length]

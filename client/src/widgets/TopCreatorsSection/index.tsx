@@ -11,7 +11,7 @@ const TopCreatorsSection: FC<{ creators: IUser[] }> = ({ creators }) => {
         title='Trending Creators'
         description='Checkout Our Trending Creators'
       >
-        {creators.map((creator) => {
+        {creators?.map((creator) => {
           return <UserCart user={creator} />;
         })}
       </LayoutForSection>
