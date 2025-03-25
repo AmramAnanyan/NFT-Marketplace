@@ -12,7 +12,6 @@ const RankingFeatures = () => {
   useEffect(() => {
     dispatch(getTopCreatorsAsync({ startRanking: 0, endRanking: 100 }));
   }, []);
-  console.log(topCreators, 'top creators ====>>');
   return (
     <div>
       {topCreators.map((creator) => {

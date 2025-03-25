@@ -5,18 +5,19 @@ export const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem('privateToken')
   );
+  const logout = useCallback(() => {
+    setIsAuthenticated('');
+    localStorage.clear();
+  }, []);
   useEffect(() => {
     if (isAuthenticated && isTokenExpired(isAuthenticated)) {
-      setIsAuthenticated(null);
+      console.log('worked ===>>');
+      logout();
     }
   }, []);
   const setToken = useCallback((token: string) => {
     setIsAuthenticated('');
     localStorage.setItem('privateToken', token);
-  }, []);
-  const logout = useCallback(() => {
-    setIsAuthenticated('');
-    localStorage.clear();
   }, []);
 
   return { isAuthenticated, setToken, logout };
