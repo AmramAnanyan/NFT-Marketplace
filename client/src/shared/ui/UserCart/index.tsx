@@ -2,6 +2,7 @@ import { FC } from 'react';
 import UserOnlineStatus from '../UserOnlineStatus';
 import styles from './index.module.scss';
 import { IUser } from 'shared/types';
+import userImage from 'shared/assets/pngIcon/userImage.png';
 interface IUserCart {
   user?: IUser;
   className?: string;
@@ -19,7 +20,7 @@ const UserCart: FC<IUserCart> = ({ className, user }) => {
       )}
       <div
         className={styles.avatar}
-        style={{ backgroundImage: `url(${user.avatarUrl})` }}
+        style={{ backgroundImage: `url(${user.avatarUrl || userImage})` }}
       ></div>
       <h5>{user.name}</h5>
       <p>

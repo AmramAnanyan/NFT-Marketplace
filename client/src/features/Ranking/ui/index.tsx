@@ -1,6 +1,6 @@
 import { selectTopCreators } from 'entities/Home/model/trendUserNft';
 import { getTopCreatorsAsync } from 'features/Home/thunks';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useAppSelector } from 'shared/hooks/useAppSelector';
 import { IUser } from 'shared/types';
@@ -15,7 +15,11 @@ const RankingFeatures = () => {
   return (
     <div>
       {topCreators.map((creator) => {
-        return <UserCart user={creator} className={styles.cart} />;
+        return (
+          <div className={styles.cart_container}>
+            <UserCart user={creator} className={styles.cart} />
+          </div>
+        );
       })}
     </div>
   );
