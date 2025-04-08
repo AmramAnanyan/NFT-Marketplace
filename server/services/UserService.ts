@@ -23,10 +23,9 @@ class UserService {
   verifyToken(token: string) {
     try {
       const decode = jwt.verify(token, JWT_SECRET_KEY);
-      console.log(decode, ' decoded token');
       return token;
     } catch (err) {
-      throw new Error('Not verifyied');
+      throw new Error('Not verified');
     }
   }
   authorizeJWT(id: string | Types.ObjectId, email: string) {

@@ -23,8 +23,5 @@ export const decodeBase64 = (str: string) => {
 
 export const isTokenExpired = (token: string) => {
   const { payload } = decodeJWT(token);
-  console.log(payload);
-  new Date(payload.exp);
-  console.log(new Date());
-  return new Date(payload.exp) < new Date();
+  return new Date(Number(payload.exp) * 1000) < new Date();
 };
