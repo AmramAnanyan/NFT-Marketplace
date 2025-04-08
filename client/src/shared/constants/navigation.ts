@@ -30,17 +30,17 @@ export const HARD_CODE_FOOTER_NAVIGATION = [
     path: '/',
     subTitles: [
       {
-        id: 4,
+        id: 11,
         title: 'Marketplace',
         path: '/'
       },
       {
-        id: 4,
+        id: 12,
         title: 'Ranking',
         path: '/ranking'
       },
       {
-        id: 4,
+        id: 14,
         title: 'Connect Wallet',
         path: '/connect-wallet'
       }
@@ -52,17 +52,17 @@ export const HARD_CODE_FOOTER_NAVIGATION = [
     path: '/',
     subTitles: [
       {
-        id: 4,
+        id: 21,
         title: 'Marketplace',
         path: '/'
       },
       {
-        id: 4,
+        id: 22,
         title: 'Ranking',
         path: '/ranking'
       },
       {
-        id: 4,
+        id: 23,
         title: 'Connect Wallet',
         path: '/connect-wallet'
       }
@@ -74,12 +74,12 @@ export const HARD_CODE_FOOTER_NAVIGATION = [
     path: '/',
     subTitles: [
       {
-        id: 4,
+        id: 31,
         title: 'Subscribe our digest news and creaet your own market',
         path: '/'
       },
       {
-        id: 4,
+        id: 32,
         title: 'Email',
         path: '/ranking'
       }

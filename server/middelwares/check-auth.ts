@@ -6,6 +6,7 @@ import { HttpStatus } from '../utils/http-status';
 
 const checkAuth = (req: Request, res: Response, next: NextFunction) => {
   const token = req.header('Authorization')?.split(' ')[1];
+  console.log(token, 'token ===>>');
   const error = new HttpError(HttpStatus.UNAUTHORIZED, 'Authorization failed!');
   if (req.method === 'OPTIONS') {
     return next();

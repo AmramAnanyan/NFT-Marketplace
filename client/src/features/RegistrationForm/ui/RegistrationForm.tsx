@@ -11,6 +11,7 @@ import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { userRegistrationAsync } from '../thunks';
 import { toast } from 'shared/ui/Toast/utils';
 import { useAuth } from 'shared/hooks/useAuth';
+import React from 'react';
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
@@ -38,9 +39,8 @@ const RegistrationForm = () => {
       <form onSubmit={handleSubmit}>
         {REGISTRATION_FORM.map((input) => {
           return (
-            <>
+            <React.Fragment key={input.id}>
               <InputUi
-                key={input.id}
                 {...input}
                 value={formData[input.name || ''] || ''}
                 onChange={handleChange}
@@ -52,7 +52,7 @@ const RegistrationForm = () => {
                   }
                 ></ErrorField>
               )}
-            </>
+            </React.Fragment>
           );
         })}
         <div className={styles.socialLoginContainer}>Sign up with google</div>

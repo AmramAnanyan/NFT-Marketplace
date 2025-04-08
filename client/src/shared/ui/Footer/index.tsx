@@ -14,45 +14,43 @@ const Footer = ({ navigations }: IFooter) => {
         <div className={styles.columnsConteiner}>
           {navigations.map(({ id, path, title, subTitles }) => {
             return (
-              <>
-                <ul key={id} className={styles.columnNavigation}>
-                  <Link to={path}>{title}</Link>
+              <ul key={id} className={styles.columnNavigation}>
+                <Link to={path}>{title}</Link>
 
-                  {subTitles?.map(({ id, path, title }) => {
-                    if (title === 'Email') {
-                      return (
-                        <div className={styles.emailSubsScription}>
-                          <InputUi
-                            id={''}
-                            type={''}
-                            placeholder='Subscribe News'
-                            onChange={function (
-                              event: SyntheticEvent<Element, Event>
-                            ): void {
-                              throw new Error('Function not implemented.');
-                            }}
-                            value={''}
-                            classN={styles.subscribeInput}
-                          />
-                          <ButtonUI
-                            isLoading={false}
-                            text={'Subscribe'}
-                            classN={styles.subscribeButton}
-                            onClick={function (): void {
-                              throw new Error('Function not implemented.');
-                            }}
-                          />
-                        </div>
-                      );
-                    }
+                {subTitles?.map(({ id, path, title }) => {
+                  if (title === 'Email') {
                     return (
-                      <li key={id}>
-                        <Link to={path}>{title}</Link>
-                      </li>
+                      <div className={styles.emailSubsScription} key={id}>
+                        <InputUi
+                          id={''}
+                          type={''}
+                          placeholder='Subscribe News'
+                          onChange={function (
+                            event: SyntheticEvent<Element, Event>
+                          ): void {
+                            throw new Error('Function not implemented.');
+                          }}
+                          value={''}
+                          classN={styles.subscribeInput}
+                        />
+                        <ButtonUI
+                          isLoading={false}
+                          text={'Subscribe'}
+                          classN={styles.subscribeButton}
+                          onClick={function (): void {
+                            throw new Error('Function not implemented.');
+                          }}
+                        />
+                      </div>
                     );
-                  })}
-                </ul>
-              </>
+                  }
+                  return (
+                    <li key={id}>
+                      <Link to={path}>{title}</Link>
+                    </li>
+                  );
+                })}
+              </ul>
             );
           })}
         </div>

@@ -1,14 +1,14 @@
-import React from 'react'
-import styles from './index.module.scss'
+import React from 'react';
+import styles from './index.module.scss';
 export interface IInput {
-  id: string
-  type: string
-  name?: string
-  label?: string
-  placeholder?: string
-  onChange: (event: React.SyntheticEvent) => void
-  value: string
-  classN?: string
+  id: string;
+  type: string;
+  name?: string;
+  label?: string;
+  placeholder?: string;
+  onChange: (event: React.SyntheticEvent) => void;
+  value: string;
+  classN?: string;
 }
 const InputUi = ({
   id,
@@ -37,7 +37,7 @@ const InputUi = ({
         value={value}
       />
     </>
-  )
-}
+  );
+};
 
-export default InputUi
+export default InputUi;

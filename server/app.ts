@@ -47,7 +47,7 @@ class App {
   }
   #runServer() {
     this.#app.listen(PORT, () => {
-      console.log(`app runed on ${PORT} PORT`);
+      console.log(`app run on ${PORT} PORT`);
     });
   }
   run() {

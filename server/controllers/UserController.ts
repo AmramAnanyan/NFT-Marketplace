@@ -4,6 +4,7 @@ import { Result, ValidationError, validationResult } from 'express-validator';
 import { Document } from 'mongoose';
 import HttpError from '../errors/HttpError';
 import { HttpMessages, HttpStatus } from '../utils/http-status';
+import DatabaseError from '../errors/DatabaseError';
 
 class UserController {
   userService: UserService;
@@ -24,14 +25,18 @@ class UserController {
           })
           .cookie('privateToken', token);
       }
-      res.status(400).json({ success: false, errors: errors.array() });
+      return res
+        .status(HttpStatus.BAD_REQUEST)
+        .json({ success: false, errors: errors.array() });
     } catch (err) {
-      if (err instanceof HttpError) {
+      if (err instanceof DatabaseError) {
         return res
           .status(err.statusCode)
           .json({ success: false, message: err.message });
       }
-      res.status(500).json({ message: 'Registration error' });
+      // return res
+      //   .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      //   .json({ message: 'Registration error' });
     }
   };
   signIn = async (req: Request, res: Response) => {

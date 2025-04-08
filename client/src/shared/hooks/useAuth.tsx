@@ -11,6 +11,7 @@ export const useAuth = () => {
   }, []);
   useEffect(() => {
     if (isAuthenticated && isTokenExpired(isAuthenticated)) {
+      console.log(isTokenExpired(isAuthenticated), '====<<<');
       console.log('worked ===>>');
       logout();
     }
