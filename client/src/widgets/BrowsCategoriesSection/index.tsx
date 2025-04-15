@@ -1,18 +1,16 @@
-import CategoryCard from 'shared/ui/CategoryCart'
-import styles from './index.module.scss'
-import LoyautForSection from 'shared/ui/LoyautForSection'
+import CategoryCard from 'shared/ui/CategoryCart';
+import styles from './index.module.scss';
+import LoyautForSection from 'shared/ui/LoyautForSection';
 
 const BrowseCategory = () => {
   return (
-    <section className={styles.conteiner}>
-      <LoyautForSection>
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-      </LoyautForSection>
-    </section>
-  )
-}
+    <LoyautForSection>
+      <CategoryCard />
+      <CategoryCard />
+      <CategoryCard />
+      <CategoryCard />
+    </LoyautForSection>
+  );
+};
 
-export default BrowseCategory
+export default BrowseCategory;

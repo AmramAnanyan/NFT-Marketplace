@@ -1,6 +1,5 @@
 // @ts-nocheck
 import ColectionCart from 'shared/ui/ColectionCart';
-import styles from './index.module.scss';
 import LayoutForSection from 'shared/ui/LoyautForSection';
 interface IColection {
   id: string;
@@ -24,13 +23,11 @@ const colectData: IColection = {
 };
 const ColectionSection = () => {
   return (
-    <section className={styles.conteiner}>
-      <LayoutForSection>
-        <ColectionCart {...colectData} />
-        <ColectionCart {...colectData} />
-        <ColectionCart {...colectData} />
-      </LayoutForSection>
-    </section>
+    <LayoutForSection>
+      <ColectionCart {...colectData} />
+      <ColectionCart {...colectData} />
+      <ColectionCart {...colectData} />
+    </LayoutForSection>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss';
+import NewLayout from '../NewLayout';
 interface ILoyautForSection {
   title?: string;
   description?: string;
@@ -34,7 +35,7 @@ const LayoutForSection = ({
   return (
     <section className={styles.conteiner}>
       {isHeader && <HeaderForLayout title={title} description={description} />}
-      <div className={styles.colectionSection}>{children}</div>
+      <NewLayout>{children}</NewLayout>
     </section>
   );
 };

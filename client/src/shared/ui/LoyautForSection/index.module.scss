@@ -29,9 +29,7 @@
 .colectionSection {
   display: flex;
   min-width: var(--desktop-max-width);
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 16px;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);

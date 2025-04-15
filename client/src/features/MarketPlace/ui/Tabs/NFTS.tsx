@@ -7,15 +7,12 @@ export const NFTS: FC<PropsWithChildren<{ nfts: INFT[] }>> = ({
   children,
   nfts
 }) => {
-  console.log({ nfts });
   return (
-    <div>
-      <LayoutForSection isHeader={false}>
-        {nfts?.map((nft) => {
-          //@ts-ignore
-          return <NftCart {...nft} />;
-        })}
-      </LayoutForSection>
-    </div>
+    <LayoutForSection isHeader={false}>
+      {nfts?.map((nft) => {
+        //@ts-ignore
+        return <NftCart {...nft} />;
+      })}
+    </LayoutForSection>
   );
 };

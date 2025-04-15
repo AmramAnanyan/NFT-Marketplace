@@ -6,16 +6,14 @@ import { IUser } from 'shared/types';
 
 const TopCreatorsSection: FC<{ creators: IUser[] }> = ({ creators }) => {
   return (
-    <section>
-      <LayoutForSection
-        title='Trending Creators'
-        description='Checkout Our Trending Creators'
-      >
-        {creators?.map((creator) => {
-          return <UserCart user={creator} />;
-        })}
-      </LayoutForSection>
-    </section>
+    <LayoutForSection
+      title='Trending Creators'
+      description='Checkout Our Trending Creators'
+    >
+      {creators?.map((creator) => {
+        return <UserCart user={creator} />;
+      })}
+    </LayoutForSection>
   );
 };
 
