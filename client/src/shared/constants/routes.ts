@@ -31,5 +31,11 @@ export const HARD_CODE_ROUTES: Array<RouteType> = [
     props: null,
     component: lazy(() => import('pages/MarketPlace')),
     isPrivate: false
+  },
+  {
+    path: '/connect-wallet',
+    props: null,
+    component: lazy(() => import('pages/ConnectWallet')),
+    isPrivate: false
   }
 ];
